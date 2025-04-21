@@ -10,7 +10,7 @@ import java.io.IOException;
 public class SystemApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        // Carga el FXML desde resources
+
         FXMLLoader fxmlLoader = new FXMLLoader(
                 getClass().getResource("/org/arzzcorp/barisystem/system-view.fxml")
         );

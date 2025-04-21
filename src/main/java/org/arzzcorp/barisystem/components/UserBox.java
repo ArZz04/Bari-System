@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import org.arzzcorp.barisystem.services.AuthService;
 import org.arzzcorp.barisystem.services.AuthState;
 
 import java.io.IOException;
@@ -21,8 +22,6 @@ public class UserBox extends HBox {
     @FXML private Label userName;
     @FXML private Label userRole;
     @FXML private Button logoutBtn;
-
-    private static final BooleanProperty loggedInProperty = new SimpleBooleanProperty(false);
 
     public UserBox() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/arzzcorp/barisystem/components/user-box.fxml"));
@@ -50,14 +49,6 @@ public class UserBox extends HBox {
         logoutBtn.setOnAction(event -> handleLogout());
     }
 
-    public static BooleanProperty loggedInProperty() {
-        return loggedInProperty;
-    }
-
-    public static boolean isLoggedIn() {
-        return loggedInProperty.get();
-    }
-
     private void updateVisibility(boolean loggedIn) {
         userName.setVisible(loggedIn);
         userName.setManaged(loggedIn);
@@ -81,6 +72,7 @@ public class UserBox extends HBox {
     @FXML
     private void handleLogout() {
         AuthState.getInstance().logout(); // Desconecta desde el estado global
+        AuthService.logout();
     }
 
 }

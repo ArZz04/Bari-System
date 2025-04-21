@@ -49,7 +49,6 @@ public class LoginBox extends HBox {
         this.visibleProperty().bind(AuthState.getInstance().loggedInProperty().not());
         this.managedProperty().bind(AuthState.getInstance().loggedInProperty().not());
 
-
         // Configuración inicial de los campos de contraseña
         passwordTextField.setVisible(false);
         passwordTextField.setManaged(false);
@@ -73,16 +72,6 @@ public class LoginBox extends HBox {
     public void setVisibleBasedOnLoginStatus(boolean isLoggedIn) {
         this.setVisible(!isLoggedIn);
         this.setManaged(!isLoggedIn);  // Esto evita que ocupe espacio cuando está oculto
-    }
-
-    private void updateVisibility() {
-        boolean shouldShow = !UserBox.isLoggedIn();
-        this.setVisible(shouldShow);
-        this.setManaged(shouldShow);
-
-        // También puedes mantener tu lógica actual de campos individuales
-        passwordTextField.setVisible(false);
-        passwordTextField.setManaged(false);
     }
 
     private void togglePasswordVisibility() {
@@ -146,13 +135,6 @@ public class LoginBox extends HBox {
         usernameField.clear();
         passwordField.clear();
         passwordTextField.clear();
-    }
-
-    private void handleLogout() {
-        System.out.println("Cerrando sesión...");
-        // Aquí puedes agregar tu lógica real de cierre de sesión
-        UserBox.loggedInProperty().set(false);
-        setVisibleBasedOnLoginStatus(false);
     }
 
     private void showErrorMessage(String message) {

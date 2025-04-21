@@ -19,17 +19,24 @@ public class AuthService {
 
                 JSONObject jsonResponse = new JSONObject(response);
 
-                System.out.println( "Respuesta de autenticación: " + jsonResponse.toString());
-
-                return jsonResponse.has("token");
+                // Gestion del token usando la clase TokenService
+                if (jsonResponse.has("token")) {
+                    TokenService.setAuthToken(jsonResponse.getString("token"));
+                    System.out.println("Token guardado");
+                    return true;
+                }
+                return false;
 
             } catch (Exception e) {
-                if (e.getMessage() == null) {
-                    System.out.println("La API no está disponible");
-                }
                 System.err.println("Error en autenticación: " + e.getMessage());
                 return false;
             }
         });
+    }
+
+    // Logout: borra el token
+    public static void logout() {
+        TokenService.clearAuthToken();
+        System.out.println("Token eliminado");
     }
 }
