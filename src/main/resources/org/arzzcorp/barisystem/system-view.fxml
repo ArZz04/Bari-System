@@ -3,15 +3,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import org.arzzcorp.barisystem.components.*?>
 
-<BorderPane prefHeight="720" prefWidth="1280" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="org.arzzcorp.barisystem.SystemController">
+<?import javafx.scene.shape.Rectangle?>
+<BorderPane prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.arzzcorp.barisystem.SystemController">
 
     <!-- ===== BARRA LATERAL IZQUIERDA (MENÚ) ===== -->
     <left>
-        <VBox fx:id="sidebar" alignment="TOP_CENTER" prefWidth="300" spacing="20" style="-fx-background-color: #400814; -fx-padding: 15;">  <!-- Centrado vertical y horizontal -->
+        <VBox fx:id="sidebar" alignment="TOP_CENTER" prefWidth="270" spacing="20" style="-fx-background-color: #400814; -fx-padding: 15;">  <!-- Centrado vertical y horizontal -->
 
             <!-- Espaciador para separar el logo de la parte superior -->
-            <Region VBox.vgrow="ALWAYS" maxHeight="10" />
+            <Region maxHeight="10" VBox.vgrow="ALWAYS" />
 
             <!-- Logo centrado -->
             <StackPane alignment="CENTER">  <!-- Contenedor extra para centrado perfecto -->
@@ -22,17 +24,20 @@
                 </ImageView>
             </StackPane>
 
-            <Region VBox.vgrow="ALWAYS" maxHeight="10" />
+            <Region maxHeight="10" VBox.vgrow="ALWAYS" />
 
             <!-- Botones del menú -->
             <Button style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Inicio" />
-            <Button style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Clientes" />
-            <Button style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Ventas" />
+            <Button style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Precios" />
+            <Button style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Pedidos" />
 
             <Region VBox.vgrow="ALWAYS" />
 
+            <!-- Contenedor para iniciar sesion en caso de ser necesario -->
+            <LoginBox fx:id="loginBox" />
+
             <!-- Contenedor para login o info de usuario -->
-            <HBox fx:id="userBox" alignment="CENTER" spacing="10" />
+            <UserBox fx:id="userBox" />
 
         </VBox>
     </left>
