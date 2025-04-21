@@ -18,6 +18,7 @@ public class SystemApplication extends Application {
         stage.setTitle("BARI SYSTEM");
         stage.setScene(scene);
         stage.show();
+        
     }
 
     public static void main(String[] args) {

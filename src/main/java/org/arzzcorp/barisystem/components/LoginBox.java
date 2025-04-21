@@ -115,6 +115,7 @@ public class LoginBox extends HBox {
                     Platform.runLater(() -> {
                         if (isAuthenticated) {
                             AuthState.getInstance().login();
+                            AuthService.getUserInfo();
                             clearFields();
                         } else {
                             showErrorMessage("Credenciales incorrectas");

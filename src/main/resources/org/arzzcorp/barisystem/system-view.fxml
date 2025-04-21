@@ -6,6 +6,7 @@
 <?import org.arzzcorp.barisystem.components.*?>
 
 <?import javafx.scene.shape.Rectangle?>
+<?import org.arzzcorp.barisystem.components.generic.MenuSide?>
 <BorderPane prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.arzzcorp.barisystem.SystemController">
 
     <!-- ===== BARRA LATERAL IZQUIERDA (MENÚ) ===== -->
@@ -26,10 +27,7 @@
 
             <Region maxHeight="10" VBox.vgrow="ALWAYS" />
 
-            <!-- Botones del menú -->
-            <Button style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Inicio" />
-            <Button style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Precios" />
-            <Button style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Pedidos" />
+            <MenuSide fx:id="menuSide" />
 
             <Region VBox.vgrow="ALWAYS" />
 

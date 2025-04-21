@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import org.arzzcorp.barisystem.services.AuthService;
 import org.arzzcorp.barisystem.services.AuthState;
+import org.arzzcorp.barisystem.services.UserService;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -38,8 +39,6 @@ public class UserBox extends HBox {
 
     private void initialize() {
 
-        // setUserInfo("Juan Arvizu", "Sistemas", "/org/arzzcorp/barisystem/images/users/arzz.jpg");
-
         this.setAlignment(Pos.CENTER); // Centra los hijos del HBox
         this.setSpacing(10); // Espacio entre elementos (opcional)
 
@@ -65,14 +64,30 @@ public class UserBox extends HBox {
 
     public void setUserInfo(String name, String role, String imageUrl) {
         userName.setText(name);
-        userRole.setText(role);
-        userImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(imageUrl))));
+        userRole.setText(role+"1");
+
+        try {
+            Image image;
+            // Si la ruta tiene "/" al principio, la tratamos como un recurso dentro del classpath
+            if (imageUrl.startsWith("/")) {
+                image = new Image(getClass().getResource(imageUrl).toExternalForm());
+            } else {
+                // Si no es una ruta con "/", buscamos la ruta absoluta
+                image = new Image("file:" + imageUrl); // Ruta de archivo directo
+            }
+            userImage.setImage(image);
+        } catch (Exception e) {
+            System.err.println("Error al cargar la imagen: " + e.getMessage());
+        }
     }
 
     @FXML
     private void handleLogout() {
         AuthState.getInstance().logout(); // Desconecta desde el estado global
         AuthService.logout();
+
+        UserService.clearUserInfo();
+
     }
 
 }

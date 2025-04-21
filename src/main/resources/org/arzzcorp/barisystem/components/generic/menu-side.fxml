@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+
+<fx:root type="javafx.scene.layout.VBox" alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+
+    <Button visible="false" fx:id="mainBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Inicio" />
+    <Button visible="false" fx:id="pricesBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Precios" />
+    <Button visible="false" fx:id="ordersBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Pedidos" />
+
+</fx:root>

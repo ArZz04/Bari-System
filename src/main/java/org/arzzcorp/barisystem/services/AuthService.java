@@ -34,7 +34,38 @@ public class AuthService {
         });
     }
 
-    // Logout: borra el token
+    // Funcion para hacer el get para obtener la informacion del usuario
+    public static CompletableFuture<JSONObject> getUserInfo() {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                // Obtener el token de autenticación
+                String token = TokenService.getAuthToken();
+                if (token == null) {
+                    throw new Exception("Token no encontrado");
+                }
+
+                // Realizar la solicitud GET a la API para obtener la información del usuario
+                String response = ApiService.makeGetRequestSync(
+                        "http://bariparques.local:3000/api/users/profile/info",
+                        token
+                );
+
+                // Convertir la respuesta a JSONObject
+                JSONObject userInfo = new JSONObject(response);
+
+                // Pasar la información del usuario al UserService para manejarla
+                UserService.handleUserInfo(userInfo);
+
+                return userInfo;
+
+            } catch (Exception e) {
+                System.err.println("Error al obtener información del usuario: " + e.getMessage());
+                return null;
+            }
+
+        });
+    }
+
     public static void logout() {
         TokenService.clearAuthToken();
         System.out.println("Token eliminado");

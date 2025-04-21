@@ -33,4 +33,22 @@ public class ApiService {
         }
     }
 
+    public static String makeGetRequestSync(String url, String token) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + token)  // Aquí se incluye el token en el header
+                .GET()
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 200) {
+            return response.body();
+        } else {
+            throw new Exception("HTTP error: " + response.statusCode() + " - " + response.body());  // Lanza un error si la respuesta no es exitosa
+        }
+    }
 }
