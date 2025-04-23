@@ -43,7 +43,9 @@ public class UserBox extends HBox {
         this.setSpacing(10); // Espacio entre elementos (opcional)
 
         AuthState.getInstance().loggedInProperty().addListener((obs, oldVal, newVal) -> updateVisibility(newVal));
+
         updateVisibility(AuthState.getInstance().isLoggedIn());
+        UserService.setUserBox(this); // <- Asegúrate de poner esto aquí
 
         logoutBtn.setOnAction(event -> handleLogout());
     }
@@ -64,7 +66,7 @@ public class UserBox extends HBox {
 
     public void setUserInfo(String name, String role, String imageUrl) {
         userName.setText(name);
-        userRole.setText(role+"1");
+        userRole.setText(role);
 
         try {
             Image image;
@@ -78,6 +80,7 @@ public class UserBox extends HBox {
             userImage.setImage(image);
         } catch (Exception e) {
             System.err.println("Error al cargar la imagen: " + e.getMessage());
+            userImage.setImage(new Image(getClass().getResource("/org/arzzcorp/barisystem/images/users/default-avatar.png").toExternalForm()));
         }
     }
 
@@ -86,8 +89,9 @@ public class UserBox extends HBox {
         AuthState.getInstance().logout(); // Desconecta desde el estado global
         AuthService.logout();
 
-        UserService.clearUserInfo();
+        userImage.setImage(new Image(getClass().getResource("/org/arzzcorp/barisystem/images/users/default-avatar.png").toExternalForm()));
 
+        UserService.clearUserInfo();
     }
 
 }

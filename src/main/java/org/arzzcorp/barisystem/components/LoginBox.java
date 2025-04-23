@@ -65,13 +65,9 @@ public class LoginBox extends HBox {
         showPasswordButton.setOnAction(event -> togglePasswordVisibility());
 
         // Acción de login
+        loginBtn.setDefaultButton(true);
         loginBtn.setOnAction(event -> handleLogin());
 
-    }
-
-    public void setVisibleBasedOnLoginStatus(boolean isLoggedIn) {
-        this.setVisible(!isLoggedIn);
-        this.setManaged(!isLoggedIn);  // Esto evita que ocupe espacio cuando está oculto
     }
 
     private void togglePasswordVisibility() {

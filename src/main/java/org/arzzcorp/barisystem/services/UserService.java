@@ -1,5 +1,6 @@
 package org.arzzcorp.barisystem.services;
 
+import javafx.fxml.FXML;
 import org.arzzcorp.barisystem.components.UserBox;
 import org.json.JSONObject;
 
@@ -26,26 +27,25 @@ public class UserService {
         userInfo = null;
     }
 
+    public static void setUserBox(UserBox userBoxRef) {
+        userBox = userBoxRef;
+    }
+
     // Método para manejar la información del usuario
-    public static void handleUserInfo(JSONObject userInfo) {
+    public static void handleUserInfo(JSONObject userInfo) {;
 
         // Almacenar la información del usuario en el servicio UserService
         setUserInfo(userInfo);
 
-        // Solo creamos la instancia de UserBox una vez
-        if (userBox == null) {
-            userBox = new UserBox();  // Solo se crea una vez, al principio
-        }
-
         // Acceder a la clave 'user' que contiene la información del usuario
         JSONObject user = userInfo.getJSONObject("user");
 
-        System.out.println("Nombre: " + user.getString("name"));
-        System.out.println("Rol: " + user.getString("role"));
-        System.out.println("Imagen: " + user.getString("image"));
-
-        // Usamos la instancia existente de UserBox para actualizar la información
-        userBox.setUserInfo(user.getString("name"), user.getString("role"), user.getString("image"));
+        if (userBox != null) {
+            javafx.application.Platform.runLater(() -> {
+                userBox.setUserInfo(user.getString("name"), user.getString("role"), user.getString("image"));
+            });
+        }
+        AuthState.getInstance().loadUserData(); // Cambia el estado a "datos cargados"
     }
 
 }

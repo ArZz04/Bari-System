@@ -1,0 +1,129 @@
+/* Main Colors */
+* {
+    -fx-primary: #5a0c1c;
+    -fx-primary-dark: #3a0812;
+    -fx-secondary: #ffffff;
+    -fx-light-grey: rgba(255, 255, 255, 0.7);
+    -fx-focus-color: -fx-primary;
+}
+
+/* Root Styling */
+.root {
+    -fx-background-color: -fx-secondary;
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+/* Product Row */
+.product-row {
+    -fx-background-color: -fx-secondary;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-padding: 14px 20px;
+    -fx-spacing: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
+}
+
+/* Hover effect for product row */
+.product-row:hover {
+    -fx-background-color: derive(-fx-secondary, -2%);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0, 0, 4);
+}
+
+/* Separator */
+.separator {
+    -fx-background-color: rgba(90, 12, 28, 0.1);
+    -fx-opacity: 0.5;
+}
+
+/* Labels */
+.field-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: -fx-light-grey;
+    -fx-font-weight: normal;
+    -fx-padding: 0 0 2 0;
+    -fx-text-alignment: left;
+    -fx-opacity: 0.9;
+}
+
+.plu-value {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 1, 0, 0, 1);
+}
+
+.product-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 1, 0, 0, 1);
+}
+
+.unit-label, .family-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #555555;
+}
+
+/* Price Fields */
+.currency-symbol {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+}
+
+.price-input {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent -fx-primary transparent;
+    -fx-border-width: 0 0 1.5 0;
+    -fx-border-radius: 0;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+    -fx-padding: 4 0;
+}
+
+.price-input:focused {
+    -fx-border-color: transparent transparent -fx-primary-dark transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.sale-price {
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+}
+
+/* Action Button (commented out in your FXML but styled for future use) */
+.action-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: rgba(90, 12, 28, 0.1);
+    -fx-background-radius: 50%;
+}
+
+/* Hover Effects */
+.product-row:hover .plu-value {
+    -fx-effect: dropshadow(gaussian, rgba(90, 12, 28, 0.3), 5, 0, 0, 0);
+}
+
+/* Column Containers (for consistent background and padding) */
+.column-container {
+    -fx-background-color: rgba(90, 12, 28, 0.015);
+    -fx-background-radius: 6px;
+    -fx-padding: 4 6;
+}
+
+/* Improved input styling */
+.price-input {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent -fx-primary transparent;
+    -fx-border-width: 0 0 1.5 0;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+    -fx-padding: 4 0;
+}
+

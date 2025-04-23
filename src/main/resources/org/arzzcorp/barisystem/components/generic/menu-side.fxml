@@ -7,6 +7,7 @@
 
     <Button visible="false" fx:id="mainBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Inicio" />
     <Button visible="false" fx:id="pricesBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Precios" />
+    <Button visible="false" fx:id="productsBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Productos" />
     <Button visible="false" fx:id="ordersBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Pedidos" />
 
 </fx:root>

@@ -13,7 +13,7 @@
     </VBox>
     <ImageView fx:id="userImage" fitHeight="50" fitWidth="50" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../images/users/dylosp.jpg" />
+            <Image url="@../images/users/default-avatar.png" />
         </image>
     </ImageView>
     <Button fx:id="logoutBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white;" text="Cerrar Sesión" />

@@ -15,6 +15,7 @@ public class MenuSide extends VBox {
 
     @FXML private Button mainBtn;
     @FXML private Button pricesBtn;
+    @FXML private Button productsBtn;
     @FXML private Button ordersBtn;
 
     public MenuSide() {
@@ -76,28 +77,37 @@ public class MenuSide extends VBox {
 
     // Ocultar botones
     public void hideButtons() {
-        mainBtn.setVisible(false);
-        pricesBtn.setVisible(false);
-        ordersBtn.setVisible(false);
+        setButtonVisibility(mainBtn, false);
+        setButtonVisibility(pricesBtn, false);
+        setButtonVisibility(productsBtn, false);
+        setButtonVisibility(ordersBtn, false);
+    }
+
+    private void setButtonVisibility(Button button, boolean visible) {
+        button.setVisible(visible);
+        button.setManaged(visible);
     }
 
     // Mostrar botones acorde a su rol
     public void showButtons(String role) {
         switch (role) {
             case "SISTEMAS":
-                mainBtn.setVisible(true);
-                pricesBtn.setVisible(true);
-                ordersBtn.setVisible(true);
+                setButtonVisibility(mainBtn, true);
+                setButtonVisibility(pricesBtn, true);
+                setButtonVisibility(productsBtn, true);
+                setButtonVisibility(ordersBtn, true);
                 break;
             case "COMPRAS":
-                mainBtn.setVisible(true);
-                pricesBtn.setVisible(false);
-                ordersBtn.setVisible(true);
+                setButtonVisibility(mainBtn, true);
+                setButtonVisibility(pricesBtn, false);
+                setButtonVisibility(productsBtn, true);
+                setButtonVisibility(ordersBtn, true);
                 break;
             case "GENERAL":
-                mainBtn.setVisible(true);
-                pricesBtn.setVisible(false);
-                ordersBtn.setVisible(false);
+                setButtonVisibility(mainBtn, true);
+                setButtonVisibility(pricesBtn, false);
+                setButtonVisibility(productsBtn, true);
+                setButtonVisibility(ordersBtn, false);
                 break;
             default:
                 hideButtons();

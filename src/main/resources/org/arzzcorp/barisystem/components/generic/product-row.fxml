@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root alignment="CENTER_LEFT" maxHeight="20" spacing="10" stylesheets="@../../css/product-row.css" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- PLU Section -->
+    <VBox alignment="CENTER" minWidth="80">
+        <Label fx:id="pluLabel" styleClass="plu-value" text="1234" />
+    </VBox>
+
+    <Separator orientation="VERTICAL" styleClass="separator" />
+
+    <!-- Product Name Section -->
+    <VBox alignment="CENTER_LEFT" minWidth="200">
+        <Label fx:id="nameLabel" styleClass="product-name" text="Producto ABC" />
+    </VBox>
+
+    <Separator orientation="VERTICAL" styleClass="separator" />
+
+    <!-- Unidad de Consumo -->
+    <VBox alignment="CENTER_LEFT" minWidth="120">
+        <Label fx:id="unitLabel" styleClass="unit-label" text="kg" />
+    </VBox>
+
+    <Separator orientation="VERTICAL" styleClass="separator" />
+
+    <!-- Familia -->
+    <VBox alignment="CENTER_LEFT" minWidth="120">
+        <Label fx:id="familyLabel" styleClass="family-label" text="Carnes" />
+    </VBox>
+
+    <Separator orientation="VERTICAL" styleClass="separator" />
+
+    <!-- Precio Venta -->
+    <VBox alignment="CENTER" minWidth="120">
+        <HBox alignment="CENTER" spacing="4">
+            <Label styleClass="currency-symbol" text="S" />
+            <TextField fx:id="salePriceField" styleClass="price-input sale-price" text="599.99" />
+        </HBox>
+    </VBox>
+
+    <Separator orientation="VERTICAL" styleClass="separator" />
+
+    <!-- Precio Compra -->
+    <VBox alignment="CENTER" minWidth="120">
+        <HBox alignment="CENTER" spacing="4">
+            <Label styleClass="currency-symbol" text="S" />
+            <TextField fx:id="purchasePriceField" styleClass="price-input" text="350.00" />
+        </HBox>
+    </VBox>
+
+<!--    &lt;!&ndash; Opcional: botón de acciones &ndash;&gt;-->
+<!--    <Button styleClass="action-button" minWidth="40">-->
+<!--        <graphic>-->
+<!--            <ImageView>-->
+<!--                <Image url="@/icons/menu.png"/>-->
+<!--            </ImageView>-->
+<!--        </graphic>-->
+<!--    </Button>-->
+
+</fx:root>

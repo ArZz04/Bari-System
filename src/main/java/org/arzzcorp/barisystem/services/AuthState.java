@@ -7,6 +7,8 @@ public class AuthState {
     private static final AuthState instance = new AuthState();
 
     private final BooleanProperty loggedIn = new SimpleBooleanProperty(false);
+    private final BooleanProperty userDataLoaded = new SimpleBooleanProperty(false); // Nueva propiedad
+
 
     private AuthState() {}
 
@@ -18,6 +20,10 @@ public class AuthState {
         return loggedIn;
     }
 
+    public BooleanProperty userDataLoadedProperty() {
+        return userDataLoaded; // Getter para la propiedad de datos cargados
+    }
+
     public boolean isLoggedIn() {
         return loggedIn.get();
     }
@@ -26,7 +32,12 @@ public class AuthState {
         loggedIn.set(true);
     }
 
+    public void loadUserData() {
+        userDataLoaded.set(true);
+    }
+
     public void logout() {
         loggedIn.set(false);
+        userDataLoaded.set(false); // Reseteamos los datos cuando el usuario cierre sesión
     }
 }

@@ -1,0 +1,41 @@
+
+.context-menu {
+    -fx-background-color: #4a1a1f;
+    -fx-background-radius: 0;
+    -fx-border-color: #5a2a2f;
+    -fx-border-width: 1px;
+    -fx-padding: 2 0 2 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 4);
+}
+
+.menu-item {
+    -fx-padding: 5 12 5 12;
+    -fx-font-size: 13px;
+}
+
+.menu-item:focused {
+    -fx-background-color: #6a2a2f;
+}
+
+.menu-item > .label {
+    -fx-text-fill: #e0e0e0;
+}
+
+.menu-item:disabled > .label {
+    -fx-text-fill: #7a5a5f;
+}
+
+.menu-item:disabled:focused {
+    -fx-background-color: transparent;
+}
+
+/* Versión con bordes redondeados */
+.context-menu-rounded {
+    -fx-background-color: #4a1a1f;
+    -fx-background-radius: 8px;
+    -fx-border-color: #5a2a2f;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-padding: 4 0 4 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 4);
+}
