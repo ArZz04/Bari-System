@@ -57,7 +57,7 @@
 .product-name {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-text-fill: #333333;
+    -fx-text-fill: -fx-primary;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 1, 0, 0, 1);
 }
 
@@ -88,10 +88,6 @@
     -fx-border-width: 0 0 2 0;
 }
 
-.sale-price {
-    -fx-font-weight: bold;
-    -fx-text-fill: -fx-primary;
-}
 
 /* Action Button (commented out in your FXML but styled for future use) */
 .action-button {
@@ -126,4 +122,3 @@
     -fx-text-fill: #333333;
     -fx-padding: 4 0;
 }
-

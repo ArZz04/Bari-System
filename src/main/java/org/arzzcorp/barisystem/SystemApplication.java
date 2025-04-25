@@ -3,7 +3,6 @@ package org.arzzcorp.barisystem;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,6 +21,8 @@ public class SystemApplication extends Application {
 
         stage.setResizable(false);
 
+
+        // scene.getStylesheets().add(getClass().getResource("/org/arzzcorp/barisystem/css/application.css").toExternalForm());
         scene.getStylesheets().add(getClass().getResource("/org/arzzcorp/barisystem/css/menu-context.css").toExternalForm());
     }
 

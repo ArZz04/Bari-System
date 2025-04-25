@@ -1,0 +1,454 @@
+/* ========== COLORES PRINCIPALES ========== */
+* {
+    -fx-primary: #400814;
+    -fx-primary-dark: #300610;
+    -fx-primary-light: #5A0C1B;
+    -fx-accent: #7A2C3B;
+    -fx-focus-color: -fx-primary;
+    -fx-faint-focus-color: #5A0C1B22;
+    -fx-inside-background-color: #f5f5f5;
+    -fx-outside-background-color: white;
+    -fx-font-family: "System";
+}
+
+/* ========== CONTENEDORES PRINCIPALES ========== */
+.root {
+    -fx-background-color: -fx-outside-background-color;
+}
+
+#contentArea {
+    -fx-background-color: -fx-inside-background-color;
+    -fx-padding: 20;
+}
+
+.vbox, .hbox {
+    -fx-spacing: 10;
+}
+
+/* ========== TÍTULOS Y ETIQUETAS ========== */
+.label {
+    -fx-text-fill: #333333;
+}
+
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+    -fx-padding: 10 0 5 0;
+}
+
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+    -fx-padding: 10 0 5 0;
+}
+
+/* ========== SEPARADORES ========== */
+.separator {
+    -fx-background-color: -fx-primary;
+}
+
+.separator .line {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 1;
+}
+
+/* ========== PESTAÑAS DE SUCURSALES ========== */
+.tab-pane {
+    -fx-tab-min-width: 120px;
+    -fx-tab-max-width: 120px;
+    -fx-tab-min-height: 40px;
+}
+
+.tab-pane .tab-header-area {
+    -fx-padding: 5 0 0 0;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 5 5 0 0;
+    -fx-padding: 5 15;
+}
+
+.tab:selected {
+    -fx-background-color: -fx-primary;
+}
+
+.tab .tab-label {
+    -fx-text-fill: #555555;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: white;
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+/* ========== BARRA DE BÚSQUEDA ========== */
+.search-container {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-padding: 5;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-padding: 8 10;
+}
+
+.text-field:focused {
+    -fx-border-color: -fx-primary;
+}
+
+/* ========== FILTRO DESPLEGABLE ========== */
+.combo-box {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-padding: 0;
+}
+
+.combo-box:focused {
+    -fx-border-color: -fx-primary;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow {
+    -fx-background-color: -fx-primary;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 8 10;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 0);
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-padding: 8 10;
+    -fx-background-color: white;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected,
+.combo-box-popup .list-view .list-cell:filled:selected:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* ========== ALERTA DE CAMBIOS PENDIENTES ========== */
+.alert-box {
+    -fx-background-color: #FFF3CD;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #FFECB5;
+    -fx-border-width: 1;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+.alert-count {
+    -fx-background-color: #FFE69C;
+    -fx-background-radius: 10;
+    -fx-padding: 2 8;
+    -fx-font-weight: bold;
+    -fx-text-fill: #856404;
+}
+
+.alert-message {
+    -fx-text-fill: #856404;
+    -fx-font-weight: normal;
+}
+
+.cancel-all-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #856404;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.cancel-all-button:hover {
+    -fx-text-fill: #5e4601;
+}
+
+/* ========== TABLA DE PRODUCTOS ========== */
+.products-header {
+    -fx-background-color: -fx-primary;
+    -fx-padding: 10;
+    -fx-spacing: 5;
+}
+
+.products-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.product-item {
+    -fx-background-color: white;
+    -fx-border-color: #f0f0f0;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10;
+}
+
+.product-item:hover {
+    -fx-background-color: #f9f9f9;
+}
+
+.product-item-modified {
+    -fx-background-color: #FFF3CD;
+}
+
+.product-item-modified:hover {
+    -fx-background-color: #FFE69C;
+}
+
+.product-plu {
+    -fx-text-fill: -fx-primary;
+    -fx-font-weight: bold;
+}
+
+.product-name {
+    -fx-text-fill: -fx-primary;
+}
+
+.product-price {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 0 0 1 0;
+}
+
+.modified-badge {
+    -fx-background-color: #FFE69C;
+    -fx-background-radius: 10;
+    -fx-padding: 2 8;
+    -fx-text-fill: #856404;
+    -fx-font-size: 10px;
+}
+
+.original-price {
+    -fx-text-fill: #999999;
+    -fx-font-size: 10px;
+}
+
+/* ========== BOTONES ========== */
+.button {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: -fx-accent;
+}
+
+.button:pressed {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.button-outline {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-text-fill: -fx-primary;
+}
+
+.button-outline:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.button-outline:pressed {
+    -fx-background-color: #e0e0e0;
+}
+
+.edit-button {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-padding: 3;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+    -fx-content-display: graphic-only;
+}
+
+.edit-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.save-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #28a745;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-text-fill: #28a745;
+    -fx-padding: 3;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+    -fx-content-display: graphic-only;
+}
+
+.save-button:hover {
+    -fx-background-color: #f0fff4;
+}
+
+.cancel-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #dc3545;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-text-fill: #dc3545;
+    -fx-padding: 3;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+    -fx-content-display: graphic-only;
+}
+
+.cancel-button:hover {
+    -fx-background-color: #fff5f5;
+}
+
+.remove-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #dc3545;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-text-fill: #dc3545;
+    -fx-padding: 3;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+    -fx-content-display: graphic-only;
+}
+
+.remove-button:hover {
+    -fx-background-color: #fff5f5;
+}
+
+/* ========== BOTÓN FLOTANTE ========== */
+.floating-button {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 30;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+.floating-button:hover {
+    -fx-background-color: -fx-accent;
+}
+
+.floating-button:pressed {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.floating-button .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* ========== SCROLL PANE ========== */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 1;
+}
+
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 5;
+}
+
+.scroll-pane .scroll-bar:vertical .increment-button,
+.scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 5;
+}
+
+.scroll-pane .scroll-bar:vertical .increment-arrow,
+.scroll-pane .scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: #888888;
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* ========== CAMPOS DE EDICIÓN ========== */
+.edit-field {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-padding: 5;
+}
+
+.edit-field:focused {
+    -fx-border-color: -fx-primary;
+}
+
+/* ========== CLASES ESPECÍFICAS PARA COMPONENTES ========== */
+
+/* Aplicar a los componentes en el FXML */
+#contentArea {
+    -fx-background-color: -fx-inside-background-color;
+}
+
+.branches-tabs .tab-pane {
+    -fx-tab-min-width: 150px;
+}
+
+.search-bar-container {
+    -fx-spacing: 10;
+    -fx-padding: 10 0;
+}
+
+.products-list-container {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0);
+}
+
+.floating-button-container {
+    -fx-padding: 20;
+}
+
