@@ -21,6 +21,5 @@ public class FilterDropdown extends HBox {
     }
 
     private void initialize() {
-        System.out.println("Initializing FilterDropdown...");
     }
 }

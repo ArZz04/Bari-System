@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="StackPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12">
+    <ImageView fx:id="image1" fitWidth="1040" preserveRatio="true">
+        <Image url="@../../images/slide/parques-img.jpg" />
+    </ImageView>
+    <ImageView fx:id="image2" fitWidth="1040" preserveRatio="true" visible="false">
+        <Image url="@../../images/slide/valle-img.jpg" />
+    </ImageView>
+    <ImageView fx:id="image3" fitWidth="1040" preserveRatio="true" visible="false">
+        <Image url="@../../images/slide/cima-img.jpg" />
+    </ImageView>
+</fx:root>

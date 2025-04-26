@@ -21,6 +21,5 @@ public class AlertBox extends VBox {
     }
 
     private void initialize() {
-        System.out.println("Initializing AlertBox...");
     }
 }

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import org.arzzcorp.barisystem.SystemController;
 import org.arzzcorp.barisystem.services.AuthService;
 import org.arzzcorp.barisystem.services.AuthState;
 import org.arzzcorp.barisystem.services.UserService;
@@ -17,6 +18,8 @@ public class MenuSide extends VBox {
     @FXML private Button pricesBtn;
     @FXML private Button productsBtn;
     @FXML private Button ordersBtn;
+
+    private SystemController controller; // Referencia al controlador principal
 
     public MenuSide() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/arzzcorp/barisystem/components/generic/menu-side.fxml"));
@@ -48,19 +51,6 @@ public class MenuSide extends VBox {
             }
         });
 
-        // Si ya está logueado, lo mismo:
-        if (AuthState.getInstance().isLoggedIn()) {
-            AuthService.getUserInfo().thenAccept(userInfo -> {
-                if (userInfo != null) {
-                    String role = getRoleFromUserInfo();
-                    showButtons(role);
-                } else {
-                    hideButtons();
-                }
-            });
-        } else {
-            hideButtons();
-        }
     }
 
     // Obtener el rol desde la información del usuario
@@ -113,6 +103,4 @@ public class MenuSide extends VBox {
                 hideButtons();
         }
     }
-
-
 }

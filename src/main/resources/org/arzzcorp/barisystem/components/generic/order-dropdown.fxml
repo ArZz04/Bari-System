@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.control.Label?>
 
-<?import java.lang.String?>
+
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <fx:root type="HBox" alignment="CENTER" spacing="5" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <Label text="Filtrar por:" />
-    <ComboBox fx:id="filterComboBox" prefWidth="150" promptText="Por defecto">
+    <Label text="Ordenar por:" />
+    <ComboBox fx:id="OrderComboBox" prefWidth="150" promptText="Por defecto">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="Nombre" />
                 <String fx:value="PLU" />
                 <String fx:value="Precio" />
+                <String fx:value="Modificados" />
             </FXCollections>
         </items>
         <!-- Los items se agregarán programáticamente -->

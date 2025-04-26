@@ -15,8 +15,12 @@ module org.arzzcorp.barisystem {
     opens org.arzzcorp.barisystem to javafx.fxml;
     opens org.arzzcorp.barisystem.components to javafx.fxml; // Para UserBox
     opens org.arzzcorp.barisystem.components.generic to javafx.fxml; // Para MenuSide
+    opens org.arzzcorp.barisystem.components.views to javafx.fxml;
+
+    opens org.arzzcorp.barisystem.controllers to javafx.fxml;
 
     exports org.arzzcorp.barisystem;
     exports org.arzzcorp.barisystem.components; // Para que FXML pueda instanciar UserBox
     exports org.arzzcorp.barisystem.components.generic; // Para que FXML pueda instanciar MenuSide
+    exports org.arzzcorp.barisystem.controllers;
 }

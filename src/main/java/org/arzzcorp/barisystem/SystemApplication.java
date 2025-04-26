@@ -21,8 +21,6 @@ public class SystemApplication extends Application {
 
         stage.setResizable(false);
 
-
-        // scene.getStylesheets().add(getClass().getResource("/org/arzzcorp/barisystem/css/application.css").toExternalForm());
         scene.getStylesheets().add(getClass().getResource("/org/arzzcorp/barisystem/css/menu-context.css").toExternalForm());
     }
 

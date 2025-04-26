@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.arzzcorp.barisystem.components.generic.*?>
+
+<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <StackPane>
+            <!-- Primero coloca el Slide -->
+            <Slide />
+
+            <!-- Luego coloca encima lo que deseas, usando VBox para organizar los Labels -->
+            <VBox alignment="CENTER" spacing="10">
+
+                <Region VBox.vgrow="ALWAYS" />
+
+                <!-- Primer Label centrado -->
+                <Label style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold" text="SISTEMA DE BARI" />
+                <Label style="-fx-font-size: 24px; -fx-text-fill: white;" text="BIENVENIDO" />
+
+                <!-- Espacio flexible para que los Labels anteriores no se junten con el siguiente -->
+
+                <!-- Último Label más pequeño centrado en HBox -->
+                <HBox alignment="CENTER" spacing="5">
+                    <Label prefHeight="51.0" prefWidth="260.0" style="-fx-font-size: 16px; -fx-text-fill: white;" text="Desarrollado por Juan Arvizu | ArZz |" />
+                    <Label style="-fx-font-size: 16px; -fx-text-fill: white;" text="Versión 1.0.0" />
+                    <Label style="-fx-font-size: 16px; -fx-text-fill: white;" text=" | " />
+                    <Label style="-fx-font-size: 16px; -fx-text-fill: white;" text="2025" />
+                </HBox>
+            </VBox>
+        </StackPane>
+    </center>
+</fx:root>

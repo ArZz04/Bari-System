@@ -21,6 +21,5 @@ public class ProductRow extends HBox {
     }
 
     private void initialize() {
-        System.out.println("Initializing ProductRow...");
     }
 }

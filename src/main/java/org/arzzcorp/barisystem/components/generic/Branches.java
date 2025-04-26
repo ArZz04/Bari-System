@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.arzzcorp.barisystem.hooks.BranchState;
 
@@ -19,10 +18,9 @@ public class Branches extends VBox {
     private Tab parquesTab;
 
     @FXML
-    private HBox valleCimaTab;
+    private Tab valleCimaTab;
 
-    // Referencia al singleton BranchStatus
-    private final BranchState branchStatus = BranchState.getInstance();
+    private final BranchState branchState = BranchState.getInstance();
 
     public Branches() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/arzzcorp/barisystem/components/generic/branches.fxml"));
@@ -31,54 +29,35 @@ public class Branches extends VBox {
 
         try {
             fxmlLoader.load();
-            initialize();
         } catch (IOException e) {
             throw new RuntimeException("Error loading FXML for Branches", e);
         }
     }
 
+    @FXML
     private void initialize() {
-        System.out.println("Initializing Branches...");
+        updateSelectedBranchUI(branchState.getCurrentBranch());
 
-        // Configurar el estado inicial
-        updateSelectedBranchUI(BranchState.getCurrentBranch());
-
-        // Escuchar cambios en la sucursal seleccionada
-        branchStatus.currentBranchProperty().addListener((observable, oldValue, newValue) -> {
+        branchState.currentBranchProperty().addListener((observable, oldValue, newValue) -> {
             updateSelectedBranchUI(newValue);
         });
 
-        // Configurar listeners para las pestañas
         tabPane.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() == 0) {
-                // Primera pestaña seleccionada (PARQUES)
-                branchStatus.setCurrentBranch(BranchState.Branch.PARQUES);
+                branchState.setCurrentBranch(BranchState.Branch.PARQUES);
+            } else if (newValue.intValue() == 1) {
+                branchState.setCurrentBranch(BranchState.Branch.VALLE_CIMA);
             }
-        });
-
-        // Configurar listeners para las opciones dentro de la segunda pestaña
-        valleCimaTab.setOnMouseClicked(event -> {
-            branchStatus.setCurrentBranch(BranchState.Branch.VALLE_CIMA);
         });
     }
 
-    /**
-     * Actualiza la interfaz de usuario para reflejar la sucursal seleccionada
-     * @param branch La sucursal seleccionada
-     */
     private void updateSelectedBranchUI(BranchState.Branch branch) {
-        // Resetear estilos
-        valleCimaTab.getStyleClass().remove("branch-option-selected");
+        if (tabPane == null) return; // Protección adicional por si acaso
 
-        // Aplicar estilo según la sucursal seleccionada
         switch (branch) {
-            case PARQUES:
-                tabPane.getSelectionModel().select(0);
-                break;
-            case VALLE_CIMA:
-                tabPane.getSelectionModel().select(1);
-                valleCimaTab.getStyleClass().add("branch-option-selected");
-                break;
+            case PARQUES -> tabPane.getSelectionModel().select(0);
+            case VALLE_CIMA -> tabPane.getSelectionModel().select(1);
         }
     }
 }
+

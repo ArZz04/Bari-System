@@ -21,6 +21,5 @@ public class ProductsList extends VBox {
     }
 
     private void initialize() {
-        System.out.println("Initializing ProductsList...");
     }
 }

@@ -5,10 +5,10 @@ import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 
-public class TitleProducts extends HBox {
+public class OrderDropdown extends HBox {
 
-    public TitleProducts() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/arzzcorp/barisystem/components/generic/title-products.fxml"));
+    public OrderDropdown() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/arzzcorp/barisystem/components/generic/order-dropdown.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

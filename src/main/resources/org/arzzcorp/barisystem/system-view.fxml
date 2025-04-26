@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import org.arzzcorp.barisystem.components.*?>
-
-<?import javafx.scene.shape.Rectangle?>
 <?import org.arzzcorp.barisystem.components.generic.MenuSide?>
-<?import org.arzzcorp.barisystem.components.generic.ProductRow?>
-<?import org.arzzcorp.barisystem.components.generic.Branches?>
-<?import org.arzzcorp.barisystem.components.generic.SearchBar?>
-<?import org.arzzcorp.barisystem.components.generic.FilterDropdown?>
-<?import org.arzzcorp.barisystem.components.generic.AlertBox?>
-<?import org.arzzcorp.barisystem.components.generic.TitleProducts?>
+
+<?import org.arzzcorp.barisystem.components.views.Main?>
+<?import org.arzzcorp.barisystem.components.views.Prices?>
 <BorderPane prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.arzzcorp.barisystem.SystemController">
 
     <!-- ===== BARRA LATERAL IZQUIERDA (MENÚ) ===== -->
@@ -48,22 +41,16 @@
 
     <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <center>
-        <StackPane fx:id="contentArea" style="-fx-background-color: #f5f5f5;" stylesheets="@../barisystem/css/application.css">
-            <VBox alignment="TOP_CENTER"  >
-                <Label style="-fx-font-size: 24;" text="Precios de Sucursales" />
-                <Separator maxWidth="250" minHeight="5" style="-fx-background-color: #400814;" />
-                <Branches/>
-                <HBox>
-                    <SearchBar/>
-                    <FilterDropdown/>
-                </HBox>
-                <AlertBox/>
-                <Label style="-fx-font-size: 14;" text="Listado de Productos" />
-                <Separator maxWidth="500" minHeight="5" style="-fx-background-color: #400814;" />
-                <TitleProducts/>
-                <ProductsList/>
-            </VBox>
-        </StackPane>
+        <Main fx:id="mainView"/>
+<!--        <Prices fx:id="pricesView"/>-->
     </center>
+
+    <background>
+        <Background>
+            <fills>
+                <BackgroundFill fill="#400814" />
+            </fills>
+        </Background>
+    </background>
 
 </BorderPane>

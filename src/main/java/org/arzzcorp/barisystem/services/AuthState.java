@@ -9,7 +9,6 @@ public class AuthState {
     private final BooleanProperty loggedIn = new SimpleBooleanProperty(false);
     private final BooleanProperty userDataLoaded = new SimpleBooleanProperty(false); // Nueva propiedad
 
-
     private AuthState() {}
 
     public static AuthState getInstance() {

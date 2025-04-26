@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.HBox?>
-<fx:root type="VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="branches-tabs" style="-fx-background-color: transparent;">
+<fx:root type="VBox" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <TabPane fx:id="tabPane" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: transparent;" styleClass="branches-tabs" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="PARQUES" fx:id="parquesTab" styleClass="branch-tab">
+            <Tab fx:id="parquesTab" styleClass="branch-tab" text="PARQUES">
                 <VBox styleClass="tab-content" />
             </Tab>
-            <Tab text="VALLE | CIMA" fx:id="valleCimaTab" styleClass="branch-tab">
+            <Tab fx:id="valleCimaTab" styleClass="branch-tab" text="VALLE | CIMA">
                 <VBox styleClass="tab-content" />
             </Tab>
         </tabs>

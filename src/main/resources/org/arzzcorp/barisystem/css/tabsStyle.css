@@ -1,0 +1,4 @@
+.tab-pane .tab-header-area {
+    -fx-padding: 0;
+    -fx-pref-height: 40px; /* o lo que necesites */
+}

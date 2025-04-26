@@ -21,6 +21,5 @@ public class SearchBar extends HBox {
     }
 
     private void initialize() {
-        System.out.println("Initializing Searchbar...");
     }
 }
