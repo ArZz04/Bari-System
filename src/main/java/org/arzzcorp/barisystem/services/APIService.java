@@ -1,9 +1,10 @@
 package org.arzzcorp.barisystem.services;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.concurrent.CompletableFuture;
 
-public class AuthService {
+public class APIService {
 
     public static CompletableFuture<Boolean> login(String username, String password) {
         return CompletableFuture.supplyAsync(() -> {
@@ -12,7 +13,7 @@ public class AuthService {
                 requestBody.put("username", username);
                 requestBody.put("password", password);
 
-                String response = ApiService.makePostRequestSync(
+                String response = ApiFunctions.makePostRequestSync(
                         "http://bariparques.local:3000/api/users/login",
                         requestBody.toString()
                 );
@@ -45,7 +46,7 @@ public class AuthService {
                 }
 
                 // Realizar la solicitud GET a la API para obtener la información del usuario
-                String response = ApiService.makeGetRequestSync(
+                String response = ApiFunctions.makeGetRequestSync(
                         "http://bariparques.local:3000/api/users/profile/info",
                         token
                 );
@@ -63,6 +64,36 @@ public class AuthService {
                 return null;
             }
 
+        });
+    }
+
+    // Funcion para obtener la lista de productos de la API
+    public static CompletableFuture<JSONArray> getProductsList() {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                // Obtener el token de autenticación
+                // String token = TokenService.getAuthToken();
+                // if (token == null) {
+                //     throw new Exception("Token no encontrado");
+                // }
+
+                // Realizar la solicitud GET a la API para obtener la lista de productos
+                String response = ApiFunctions.makeGetRequestSync(
+                        "http://bariparques.local:3000/api/products/"
+                );
+
+                // Convertir la respuesta a JSONObject
+                JSONArray productsList = new JSONArray(response);
+
+                // Pasar la lista de productos al ProductService para manejarla
+                ProductService.setProductsList(productsList);
+
+                return productsList;
+
+            } catch (Exception e) {
+                System.err.println("Error al obtener la lista de productos: " + e.getMessage());
+                return null;
+            }
         });
     }
 

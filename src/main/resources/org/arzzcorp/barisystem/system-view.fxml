@@ -41,8 +41,8 @@
 
     <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <center>
-        <Main fx:id="mainView"/>
-<!--        <Prices fx:id="pricesView"/>-->
+<!--        <Main fx:id="mainView"/>-->
+        <Prices fx:id="pricesView"/>
     </center>
 
     <background>

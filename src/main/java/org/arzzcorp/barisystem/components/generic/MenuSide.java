@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import org.arzzcorp.barisystem.SystemController;
-import org.arzzcorp.barisystem.services.AuthService;
+import org.arzzcorp.barisystem.services.APIService;
 import org.arzzcorp.barisystem.services.AuthState;
 import org.arzzcorp.barisystem.services.UserService;
 import org.json.JSONObject;
@@ -38,7 +38,7 @@ public class MenuSide extends VBox {
         // Listener de login
         AuthState.getInstance().loggedInProperty().addListener((obs, wasLoggedIn, isNowLoggedIn) -> {
             if (isNowLoggedIn) {
-                AuthService.getUserInfo().thenAccept(userInfo -> {
+                APIService.getUserInfo().thenAccept(userInfo -> {
                     if (userInfo != null) {
                         String role = getRoleFromUserInfo();
                         showButtons(role);

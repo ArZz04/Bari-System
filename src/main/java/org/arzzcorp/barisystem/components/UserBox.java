@@ -1,7 +1,5 @@
 package org.arzzcorp.barisystem.components;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -10,12 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import org.arzzcorp.barisystem.services.AuthService;
+import org.arzzcorp.barisystem.services.APIService;
 import org.arzzcorp.barisystem.services.AuthState;
 import org.arzzcorp.barisystem.services.UserService;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class UserBox extends HBox {
 
@@ -87,7 +84,7 @@ public class UserBox extends HBox {
     @FXML
     private void handleLogout() {
         AuthState.getInstance().logout(); // Desconecta desde el estado global
-        AuthService.logout();
+        APIService.logout();
 
         userImage.setImage(new Image(getClass().getResource("/org/arzzcorp/barisystem/images/users/default-avatar.png").toExternalForm()));
 

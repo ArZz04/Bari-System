@@ -3,10 +3,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ScrollPane?>
 
+<?import org.arzzcorp.barisystem.components.generic.ProductRow?>
 <fx:root type="VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
-        <VBox fx:id="productsContainer" spacing="1" style="-fx-background-color: white;">
-            <!-- Los productos se agregarán programáticamente -->
+        <VBox fx:id="productsContainer" style="-fx-background-color: white;">
+            <!-- Aquí van tus productos -->
         </VBox>
-    </ScrollPane>
 </fx:root>

@@ -7,10 +7,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.net.http.HttpHeaders;
-import java.util.List;
 
-public class ApiService {
+public class ApiFunctions {
 
     private static final String API_BASE_URL = "http://bariparques.local:3000";  // Dirección base de tu API
     private static final String PASSWORD_PEPPER = "miKarlitaHermosaaMiFrootloops<3";  // La palabra secreta para hashear
@@ -22,6 +20,25 @@ public class ApiService {
                 .uri(URI.create(url))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 200) {
+            return response.body();
+        } else {
+            throw new Exception("HTTP error: " + response.statusCode() + " - " + response.body());
+        }
+    }
+
+    // Método para hacer una solicitud Get sin token
+    public static String makeGetRequestSync(String url) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Content-Type", "application/json")
+                .GET()
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

@@ -2,15 +2,13 @@ package org.arzzcorp.barisystem.components;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
-import org.arzzcorp.barisystem.services.ApiService;
-import org.arzzcorp.barisystem.services.AuthService;
+import org.arzzcorp.barisystem.services.APIService;
 import org.arzzcorp.barisystem.services.AuthState;
 
 import java.io.IOException;
@@ -106,12 +104,12 @@ public class LoginBox extends HBox {
 
         loginBtn.setDisable(true);
 
-        AuthService.login(username, password)
+        APIService.login(username, password)
                 .thenAcceptAsync(isAuthenticated -> {
                     Platform.runLater(() -> {
                         if (isAuthenticated) {
                             AuthState.getInstance().login();
-                            AuthService.getUserInfo();
+                            APIService.getUserInfo();
                             clearFields();
                         } else {
                             showErrorMessage("Credenciales incorrectas");
