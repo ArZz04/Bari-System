@@ -13,7 +13,7 @@
     <Separator orientation="VERTICAL" styleClass="separator" />
 
     <!-- Product Name Section -->
-    <VBox alignment="CENTER_LEFT" minWidth="200">
+    <VBox alignment="CENTER_LEFT" prefWidth="250">
         <Label fx:id="nameLabel" styleClass="product-name" text="Producto ABC" />
     </VBox>
 
@@ -34,7 +34,7 @@
     <Separator orientation="VERTICAL" styleClass="separator" />
 
     <!-- PRECIO COMPRA -->
-    <VBox alignment="CENTER" minWidth="120">
+    <VBox alignment="CENTER" prefWidth="122">
         <HBox alignment="CENTER" spacing="4">
             <Label styleClass="currency-symbol" text="S" />
             <TextField fx:id="purchasePriceField" styleClass="price-input" text="350.00" />
@@ -44,7 +44,7 @@
     <Separator orientation="VERTICAL" styleClass="separator" />
 
     <!-- PRECIO VENTA -->
-    <VBox alignment="CENTER" minWidth="120">
+    <VBox alignment="CENTER" prefWidth="122">
         <HBox alignment="CENTER" spacing="4">
             <Label styleClass="currency-symbol" text="S" />
             <TextField fx:id="salePriceField" styleClass="price-input" text="599.99" />
@@ -54,10 +54,10 @@
     <Separator orientation="VERTICAL" styleClass="separator" />
 
     <!-- Botón para agregar -->
-    <VBox alignment="CENTER" minWidth="50">
+    <VBox alignment="CENTER" prefWidth="50">
         <Button fx:id="addButton">
             <graphic>
-                <Label styleClass="currency-symbol" text="➕" />
+                <Label styleClass="add-price" text="➕" />
             </graphic>
         </Button>
     </VBox>

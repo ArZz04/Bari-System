@@ -33,6 +33,8 @@ public class ProductRow extends HBox {
     @FXML
     private Button addButton;
 
+    private Runnable onAddButtonClick;
+
     public ProductRow() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/arzzcorp/barisystem/components/generic/product-row.fxml"));
         fxmlLoader.setRoot(this);
@@ -72,5 +74,18 @@ public class ProductRow extends HBox {
         familyLabel.setText(family);
         purchasePriceField.setText(String.format("%.2f", purchasePrice));
         salePriceField.setText(String.format("%.2f", salePrice));
+
+        // Configura el botón de agregar
+        addButton.setOnAction(e -> {
+            if (onAddButtonClick != null) {
+                onAddButtonClick.run();
+            }
+        });
+
+    }
+
+    // Método para asignar un listener desde fuera
+    public void setOnAddButtonClick(Runnable listener) {
+        this.onAddButtonClick = listener;
     }
 }

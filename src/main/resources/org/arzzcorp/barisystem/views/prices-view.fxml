@@ -14,7 +14,7 @@
             <Branches />
             <HBox spacing="15" style="-fx-padding: 5 0 0 0;">
                 <SearchBar />
-                <OrderDropdown />
+                <OrderDropdown fx:id="orderDropdown" />
                 <FilterDropdown />
             </HBox>
             <AlertBox />
@@ -29,7 +29,7 @@
             </VBox>
 
             <TitleProducts />
-            <ScrollPane fitToWidth="true" maxHeight="480" prefHeight="480" style="-fx-background-color: transparent;">
+            <ScrollPane fitToWidth="true" maxHeight="480" prefHeight="600" style="-fx-background-color: transparent;">
                 <ProductsList fx:id="productsList" style="-fx-border-color: #400814;" />
             </ScrollPane>
         </VBox>

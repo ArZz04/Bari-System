@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<fx:root type="HBox" alignment="CENTER_LEFT" style="-fx-background-color: #400814; -fx-padding: 8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <Label style="-fx-text-fill: white; -fx-min-width: 100;" text="     PLU" />
-    <Label style="-fx-text-fill: white; -fx-min-width: 250;" text="PRODUCTO" />
-    <Label style="-fx-text-fill: white; -fx-min-width: 70;" text="TIPO" />
-    <Label style="-fx-text-fill: white; -fx-min-width: 130;" text="FAMILIA" />
-    <Label style="-fx-text-fill: white; -fx-min-width: 175;" text="PRECIO COMPRA" />
-    <Label style="-fx-text-fill: white; -fx-min-width: 120;" text="PRECIO VENTA" />
+<fx:root alignment="CENTER_LEFT" style="-fx-background-color: #400814; -fx-padding: 8;" type="HBox" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <Label style="-fx-text-fill: white; -fx-padding: 0 0 0 30; -fx-pref-width: 100;" text="PLU" />
+    <Label style="-fx-text-fill: white; -fx-padding: 0 0 0 2; -fx-pref-width: 300;" text="PRODUCTO" />
+    <Label style="-fx-text-fill: white; -fx-pref-width: 75;" text="TIPO" />
+    <Label style="-fx-text-fill: white; -fx-padding: 0 0 0 2; -fx-pref-width: 135;" text="FAMILIA" />
+    <Label style="-fx-text-fill: white; -fx-pref-width: 140;" text="PRECIO COMPRA" />
+    <Label style="-fx-text-fill: white; -fx-pref-width: 120;" text="PRECIO VENTA" />
 </fx:root>

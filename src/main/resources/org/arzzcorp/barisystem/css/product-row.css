@@ -73,6 +73,11 @@
     -fx-text-fill: -fx-primary;
 }
 
+.add-price {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
 .price-input {
     -fx-background-color: transparent;
     -fx-border-color: transparent transparent -fx-primary transparent;
