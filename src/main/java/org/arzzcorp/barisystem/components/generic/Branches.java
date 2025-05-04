@@ -39,6 +39,7 @@ public class Branches extends VBox {
         updateSelectedBranchUI(branchState.getCurrentBranch());
 
         branchState.currentBranchProperty().addListener((observable, oldValue, newValue) -> {
+            // Actualiza la UI cuando cambia la rama
             updateSelectedBranchUI(newValue);
         });
 

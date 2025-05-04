@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import org.arzzcorp.barisystem.components.ProductsList;
 import org.arzzcorp.barisystem.components.generic.OrderDropdown;
+import org.arzzcorp.barisystem.hooks.BranchState;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -18,9 +19,11 @@ public class Prices extends VBox {
     @FXML private ProductsList productsList;
 
     // Lista observable para productos seleccionados
-    private ObservableList<JSONObject> selectedProducts = FXCollections.observableArrayList();
-    private ObservableList<JSONObject> addedProducts = FXCollections.observableArrayList();
+    private final ObservableList<JSONObject> selectedProducts = FXCollections.observableArrayList();
+    private final ObservableList<JSONObject> addedParquesProducts = FXCollections.observableArrayList();
+    private final ObservableList<JSONObject> addedBothProducts = FXCollections.observableArrayList();
 
+    private String currentSucursal = "PARQUES"; // o "both"
 
     public Prices() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/arzzcorp/barisystem/views/prices-view.fxml"));
@@ -38,28 +41,34 @@ public class Prices extends VBox {
     // Initialize method to set up the view
     @FXML
     private void initialize() {
-        // Configura el listener del dropdown en Prices
-        orderDropdown.setOnOrderSelected(selectedOrder -> {
-            productsList.sortBy(selectedOrder); // Delega el ordenamiento
-        });
+        orderDropdown.setOnOrderSelected(productsList::sortBy);
 
         productsList.setOnProductAdded(product -> {
-            addedProducts.add(product);
-            System.out.println("Producto agregado: " + product);
+            String currentBranch = String.valueOf(BranchState.getInstance().getCurrentBranch());
+
+            if ("VALLE_CIMA".equalsIgnoreCase(currentBranch)) {
+                addedBothProducts.add(product);
+                System.out.println("Producto agregado a VALLE_CIMA: " + product);
+            } else {
+                addedParquesProducts.add(product);
+                System.out.println("Producto agregado a PARQUES: " + product);
+            }
         });
 
-        // Pasa la lista de seleccionados a ProductsList
         productsList.setSelectedProductsList(selectedProducts);
-
     }
 
-    // Método para acceder a la lista desde fuera
     public ObservableList<JSONObject> getSelectedProducts() {
         return selectedProducts;
     }
 
-    public ObservableList<JSONObject> getAddedProducts() {
-        return addedProducts;
+    public ObservableList<JSONObject> getAddedParquesProducts() {
+        return addedParquesProducts;
     }
+
+    public ObservableList<JSONObject> getAddedBothProducts() {
+        return addedBothProducts;
+    }
+
 
 }

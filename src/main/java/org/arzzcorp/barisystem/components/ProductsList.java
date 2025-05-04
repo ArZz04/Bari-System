@@ -44,6 +44,7 @@ public class ProductsList extends VBox {
         }
     }
 
+
     private void initialize() {
         this.getChildren().add(listView);
 
@@ -51,7 +52,13 @@ public class ProductsList extends VBox {
         sortedList = new SortedList<>(observableList);
         listView.setItems(sortedList);
 
-        loadProducts();
+        BranchState.getInstance().currentBranchProperty().addListener((observable, oldBranch, newBranch) -> {
+            if (newBranch != null) {
+                loadProducts(newBranch.toString());
+            }
+        });
+
+        loadProducts(BranchState.getInstance().getCurrentBranch().toString());
 
         listView.setCellFactory(param -> new ListCell<JSONObject>() {
             @Override
@@ -83,8 +90,8 @@ public class ProductsList extends VBox {
     }
 
     // Método para cargar productos, con o sin filtro
-    public void loadProducts() {
-        ProductService.loadProductsFromAPI(productsList -> {
+    public void loadProducts(String  branch) {
+        ProductService.loadProductsFromAPI(branch, productsList -> {
             if (productsList != null && productsList.length() > 0) {
                 observableList.clear();
 
@@ -93,14 +100,14 @@ public class ProductsList extends VBox {
                     observableList.add(product);
                 }
 
-                // === ¡Elimina esta línea! ===
-                // Platform.runLater(() -> listView.setItems(observableList));
+                // Platform.runLater(() -> listView.setItems(observableList)); // si lo necesitas
 
             } else {
                 System.out.println("No hay productos para mostrar");
             }
         });
     }
+
     // Método para crear comparadores según el criterio seleccionado
     private Comparator<JSONObject> createComparator(String selectedOrder) {
         switch (selectedOrder) {
