@@ -14,7 +14,7 @@ public class SystemApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(
                 getClass().getResource("/org/arzzcorp/barisystem/system-view.fxml")
         );
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        Scene scene = new Scene(fxmlLoader.load(), 1330, 720);
         stage.setTitle("BARI SYSTEM");
         stage.setScene(scene);
         stage.show();

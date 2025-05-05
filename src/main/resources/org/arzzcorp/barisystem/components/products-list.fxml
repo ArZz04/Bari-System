@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <fx:root type="VBox" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
-        <VBox fx:id="productsContainer" prefWidth="248.0" style="-fx-background-color: white;">
+        <VBox fx:id="productsContainer" style="-fx-background-color: white;">
             <ListView fx:id="listView" />
         </VBox>
 </fx:root>

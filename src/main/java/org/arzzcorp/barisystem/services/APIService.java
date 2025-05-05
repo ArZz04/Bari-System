@@ -72,14 +72,15 @@ public class APIService {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 // Obtener el token de autenticación
-                // String token = TokenService.getAuthToken();
-                // if (token == null) {
-                //     throw new Exception("Token no encontrado");
-                // }
+                 String token = TokenService.getAuthToken();
+                 if (token == null) {
+                     throw new Exception("Token no encontrado");
+                 }
 
                 // Realizar la solicitud GET a la API para obtener la lista de productos
                 String response = ApiFunctions.makeGetRequestSync(
-                        "http://bariparques.local:4000/api/parques/products/"
+                        "http://bariparques.local:4000/api/parques/products/",
+                        token
                 );
 
                 // Convertir la respuesta a JSONObject
@@ -101,8 +102,16 @@ public class APIService {
     public static CompletableFuture<JSONArray> getProductsBothList() {
         return CompletableFuture.supplyAsync(() -> {
             try {
+
+                // Obtener el token de autenticación
+                String token = TokenService.getAuthToken();
+                if (token == null) {
+                    throw new Exception("Token no encontrado");
+                }
+
                 String response = ApiFunctions.makeGetRequestSync(
-                        "http://bariparques.local:4000/api/both/products/"
+                        "http://bariparques.local:4000/api/both/products/",
+                        token
                 );
 
                 JSONObject jsonResponse = new JSONObject(response);

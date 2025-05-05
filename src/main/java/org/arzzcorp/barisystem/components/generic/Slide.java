@@ -31,8 +31,6 @@ public class Slide extends StackPane {
 
     private void initialize() {
 
-        System.out.println("Slide initialized");
-
         // Inicializa el array de imágenes
         images = new ImageView[]{
                 (ImageView) lookup("#image1"), // Asume que las imágenes tienen IDs en el FXML

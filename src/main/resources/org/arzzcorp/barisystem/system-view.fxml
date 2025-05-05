@@ -6,7 +6,8 @@
 
 <?import org.arzzcorp.barisystem.components.views.Main?>
 <?import org.arzzcorp.barisystem.components.views.Prices?>
-<BorderPane prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.arzzcorp.barisystem.SystemController">
+<?import org.arzzcorp.barisystem.components.views.Scales?>
+<BorderPane prefHeight="720" prefWidth="1330" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.arzzcorp.barisystem.SystemController">
 
     <!-- ===== BARRA LATERAL IZQUIERDA (MENÚ) ===== -->
     <left>
@@ -41,8 +42,11 @@
 
     <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <center>
-<!--        <Main fx:id="mainView"/>-->
-        <Prices fx:id="pricesView"/>
+            <StackPane fx:id="contentPane">
+                <Main fx:id="mainView"/>
+                <Prices fx:id="pricesView"/>
+                <Scales fx:id="scalesView"/>
+            </StackPane>
     </center>
 
     <background>

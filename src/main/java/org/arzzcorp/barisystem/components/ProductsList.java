@@ -6,15 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import org.arzzcorp.barisystem.components.generic.OrderDropdown;
 import org.arzzcorp.barisystem.components.generic.ProductRow;
 import org.arzzcorp.barisystem.hooks.BranchState;
 import org.arzzcorp.barisystem.services.ProductService;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -38,15 +36,26 @@ public class ProductsList extends VBox {
 
         try {
             fxmlLoader.load();
-            initialize();
+            //initialize();
         } catch (IOException e) {
             throw new RuntimeException("Error loading FXML for MenuSide", e);
         }
     }
 
+    public static void setTokenGetted(ProductsList instance) {
+        instance.initialize(); // Llamar a initialize() en la instancia pasada
+    }
+
+    // ProductsList.java
+    public void clearProducts() {
+        observableList.clear();
+        listView.setPlaceholder(new Label("No hay productos disponibles"));
+    }
 
     private void initialize() {
-        this.getChildren().add(listView);
+        // this.getChildren().add(listView);
+
+        listView.setPlaceholder(new Label("No hay productos disponibles"));
 
         // Inicializar SortedList
         sortedList = new SortedList<>(observableList);
@@ -91,6 +100,12 @@ public class ProductsList extends VBox {
 
     // Método para cargar productos, con o sin filtro
     public void loadProducts(String  branch) {
+
+        Platform.runLater(() -> {
+            observableList.clear();
+            listView.setPlaceholder(new Label("Cargando productos..."));
+        });
+
         ProductService.loadProductsFromAPI(branch, productsList -> {
             if (productsList != null && productsList.length() > 0) {
                 observableList.clear();
@@ -100,10 +115,9 @@ public class ProductsList extends VBox {
                     observableList.add(product);
                 }
 
-                // Platform.runLater(() -> listView.setItems(observableList)); // si lo necesitas
-
             } else {
-                System.out.println("No hay productos para mostrar");
+                observableList.clear(); // Asegura que esté vacío
+                listView.setPlaceholder(new Label("No hay productos disponibles o hubo un error en la api"));
             }
         });
     }

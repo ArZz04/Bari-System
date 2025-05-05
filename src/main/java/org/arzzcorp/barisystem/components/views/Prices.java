@@ -23,8 +23,6 @@ public class Prices extends VBox {
     private final ObservableList<JSONObject> addedParquesProducts = FXCollections.observableArrayList();
     private final ObservableList<JSONObject> addedBothProducts = FXCollections.observableArrayList();
 
-    private String currentSucursal = "PARQUES"; // o "both"
-
     public Prices() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/arzzcorp/barisystem/views/prices-view.fxml"));
         fxmlLoader.setRoot(this);
@@ -36,6 +34,10 @@ public class Prices extends VBox {
         } catch (IOException e) {
             throw new RuntimeException("Error loading FXML for MenuSide", e);
         }
+    }
+
+    public ProductsList getProductsList() {
+        return productsList;
     }
 
     // Initialize method to set up the view

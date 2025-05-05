@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.arzzcorp.barisystem.components.generic.*?>
+
+<fx:root type="VBox" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <StackPane fx:id="contentArea" style="-fx-background-color: #f5f5f5;" stylesheets="@../../barisystem/css/application.css">
+        <VBox alignment="TOP_CENTER">
+            <Label style="-fx-font-size: 24;" text="Precios de Sucursales" />
+            <Separator maxWidth="250" minHeight="5" style="-fx-background-color: #400814;" />
+            <Branches />
+
+            <VBox alignment="BOTTOM_LEFT" style="-fx-padding: 10 0 0 0;">
+                <Label style="-fx-font-size: 18;" text="Bascula Servidor" />
+
+            </VBox>
+        </VBox>
+    </StackPane>
+</fx:root>

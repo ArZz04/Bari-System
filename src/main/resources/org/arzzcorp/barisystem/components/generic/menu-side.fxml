@@ -5,9 +5,10 @@
 
 <fx:root type="javafx.scene.layout.VBox" alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
 
-    <Button visible="false" fx:id="mainBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Inicio" />
-    <Button visible="false" fx:id="pricesBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Precios" />
-    <Button visible="false" fx:id="productsBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Productos" />
-    <Button visible="false" fx:id="ordersBtn" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Pedidos" />
+    <Button visible="false" fx:id="mainBtn" onAction="#onMainSelected"  style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Inicio" />
+    <Button visible="false" fx:id="pricesBtn" onAction="#onPricesSelected" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Precios" />
+    <Button visible="false" fx:id="productsBtn" onAction="#onProductsSelected"  style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Productos" />
+    <Button visible="false" fx:id="ordersBtn" onAction="#onOrdersSelected" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Pedidos" />
+    <Button visible="false" fx:id="scalesBtn" onAction="#onScalesSelected" style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 180;" text="Basculas" />
 
 </fx:root>

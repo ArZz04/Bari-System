@@ -21,6 +21,6 @@ public class Main extends BorderPane {
     }
 
     private void initialize() {
-        System.out.println("Initializing Main...");
+
     }
 }

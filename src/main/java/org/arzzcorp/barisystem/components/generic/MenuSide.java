@@ -4,13 +4,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import org.arzzcorp.barisystem.SystemController;
 import org.arzzcorp.barisystem.services.APIService;
 import org.arzzcorp.barisystem.services.AuthState;
 import org.arzzcorp.barisystem.services.UserService;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 public class MenuSide extends VBox {
 
@@ -18,8 +18,7 @@ public class MenuSide extends VBox {
     @FXML private Button pricesBtn;
     @FXML private Button productsBtn;
     @FXML private Button ordersBtn;
-
-    private SystemController controller; // Referencia al controlador principal
+    @FXML private Button scalesBtn;
 
     public MenuSide() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/arzzcorp/barisystem/components/generic/menu-side.fxml"));
@@ -71,6 +70,7 @@ public class MenuSide extends VBox {
         setButtonVisibility(pricesBtn, false);
         setButtonVisibility(productsBtn, false);
         setButtonVisibility(ordersBtn, false);
+        setButtonVisibility(scalesBtn, false);
     }
 
     private void setButtonVisibility(Button button, boolean visible) {
@@ -86,6 +86,7 @@ public class MenuSide extends VBox {
                 setButtonVisibility(pricesBtn, true);
                 setButtonVisibility(productsBtn, true);
                 setButtonVisibility(ordersBtn, true);
+                setButtonVisibility(scalesBtn, true);
                 break;
             case "COMPRAS":
                 setButtonVisibility(mainBtn, true);
@@ -103,4 +104,36 @@ public class MenuSide extends VBox {
                 hideButtons();
         }
     }
+
+    private Consumer<String> onMenuSelected;
+
+    @FXML
+    private void onMainSelected() {
+        if (onMenuSelected != null) onMenuSelected.accept("main");
+    }
+
+    @FXML
+    private void onPricesSelected() {
+        if (onMenuSelected != null) onMenuSelected.accept("prices");
+    }
+
+    @FXML
+    private void onProductsSelected() {
+        if (onMenuSelected != null) onMenuSelected.accept("products");
+    }
+
+    @FXML
+    private void onOrdersSelected() {
+        if (onMenuSelected != null) onMenuSelected.accept("orders");
+    }
+
+    @FXML
+    private void onScalesSelected() {
+        if (onMenuSelected != null) onMenuSelected.accept("scales");
+    }
+
+    public void setOnMenuSelection(Consumer<String> onMenuSelected) {
+        this.onMenuSelected = onMenuSelected;
+    }
+
 }

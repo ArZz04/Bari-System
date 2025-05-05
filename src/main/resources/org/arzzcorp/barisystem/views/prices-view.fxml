@@ -15,7 +15,7 @@
             <HBox spacing="15" style="-fx-padding: 5 0 0 0;">
                 <SearchBar />
                 <OrderDropdown fx:id="orderDropdown" />
-                <FilterDropdown />
+<!--                <FilterDropdown />-->
             </HBox>
             <AlertBox />
 
