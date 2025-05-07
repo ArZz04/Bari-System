@@ -1,15 +1,19 @@
 package org.arzzcorp.barisystem.components.views;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import org.arzzcorp.barisystem.components.ProductsList;
 import org.arzzcorp.barisystem.components.generic.Branches;
 import org.arzzcorp.barisystem.components.generic.OrderDropdown;
+import org.arzzcorp.barisystem.components.generic.SearchBar;
 import org.arzzcorp.barisystem.hooks.BranchState;
 import org.arzzcorp.barisystem.services.ProductService;
 import org.json.JSONArray;
@@ -22,8 +26,12 @@ public class Prices extends VBox {
     @FXML
     private OrderDropdown orderDropdown;
     @FXML private ProductsList productsList;
+    private SearchBar searchBar;
     @FXML private Branches branches;
     @FXML private Button sendButton;
+    @FXML private Button clearButton;
+    @FXML private Label labelAlert;
+    @FXML private Label selectedProductsCounter;
 
     // Lista observable para productos seleccionados
     private final ObservableList<JSONObject> selectedProducts = FXCollections.observableArrayList();
@@ -53,22 +61,25 @@ public class Prices extends VBox {
         productsList.setBranches(branches);
         orderDropdown.setOnOrderSelected(productsList::sortBy);
 
+        // Listener para cambios de sucursal
+        BranchState.getInstance().currentBranchProperty().addListener((obs, oldBranch, newBranch) -> {
+            resetSelections(); // Limpiar selecciones al cambiar de branch
+            productsList.loadProducts(newBranch.toString()); // Recargar productos
+        });
+
         productsList.setOnProductAdded(product -> {
             String currentBranch = String.valueOf(BranchState.getInstance().getCurrentBranch());
+            String productId = product.optString("NUMERO", ""); // ID único del producto
 
-            if ("VALLE_CIMA".equalsIgnoreCase(currentBranch)) {
-                addedBothProducts.add(product);
-                System.out.println("Producto agregado a VALLE_CIMA: " + product);
-            } else {
-                addedParquesProducts.add(product);
-                System.out.println("Producto agregado a PARQUES: " + product);
+            // Verificar duplicado
+            if (!isDuplicated(productId)) {
+                addProduct(currentBranch, product);
+                updateCounter();
             }
         });
 
         productsList.setSelectedProductsList(selectedProducts);
     }
-
-
 
     @FXML
     private void onSendButtonClicked() {
@@ -108,6 +119,51 @@ public class Prices extends VBox {
                 sendButton.setDisable(false); // Reactiva el botón
             });
         });
+    }
+
+    @FXML
+    private void onClearButtonClicked() {
+        // Limpiar listas
+        getAddedParquesProducts().clear();
+        getAddedBothProducts().clear();
+
+        // Actualizar contador
+        selectedProductsCounter.setText("0");
+
+        // Mostrar mensaje temporal
+        labelAlert.setVisible(true);
+        PauseTransition delay = new PauseTransition(Duration.seconds(5));
+        delay.setOnFinished(e -> labelAlert.setVisible(false));
+        delay.play();
+
+        // Recargar productos
+        String currentBranch = BranchState.getInstance().getCurrentBranch().toString();
+        productsList.clearProducts();  // Limpiar lista visual
+        productsList.loadProducts(currentBranch);  // Recargar desde API
+    }
+
+    private boolean isDuplicated(String productId) {
+        return addedBothProducts.stream().anyMatch(p -> p.optString("NUMERO", "").equals(productId)) ||
+                addedParquesProducts.stream().anyMatch(p -> p.optString("NUMERO", "").equals(productId));
+    }
+
+    private void addProduct(String branch, JSONObject product) {
+        if ("VALLE_CIMA".equalsIgnoreCase(branch)) {
+            addedBothProducts.add(product);
+        } else {
+            addedParquesProducts.add(product);
+        }
+    }
+
+    private void updateCounter() {
+        int total = addedBothProducts.size() + addedParquesProducts.size();
+        selectedProductsCounter.setText(String.valueOf(total));
+    }
+
+    private void resetSelections() {
+        addedBothProducts.clear();
+        addedParquesProducts.clear();
+        updateCounter();
     }
 
 

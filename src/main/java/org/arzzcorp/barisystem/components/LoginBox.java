@@ -10,6 +10,8 @@ import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import org.arzzcorp.barisystem.services.APIService;
 import org.arzzcorp.barisystem.services.AuthState;
+import org.arzzcorp.barisystem.services.SessionManager;
+import org.arzzcorp.barisystem.services.UserService;
 
 import java.io.IOException;
 
@@ -108,6 +110,7 @@ public class LoginBox extends HBox {
                 .thenAcceptAsync(isAuthenticated -> {
                     Platform.runLater(() -> {
                         if (isAuthenticated) {
+                            handleSessionExpired();
                             AuthState.getInstance().login();
                             APIService.getUserInfo();
                             clearFields();
@@ -144,5 +147,25 @@ public class LoginBox extends HBox {
             errorLabel.setManaged(false);
         });
         visiblePause.play();
+    }
+
+    private void handleSessionExpired() {
+        SessionManager.startSessionTimeout(() -> {
+            Platform.runLater(() -> {
+                UserService.logoutUser();
+                SessionManager.cancelSessionTimeout();
+
+                // si la sesion esta cerrada, no mostrar el alert
+                if (!AuthState.getInstance().isLoggedIn()) {
+                    return;
+                }
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sesión expirada");
+                alert.setHeaderText(null);
+                alert.setContentText("Tu sesión ha expirado por inactividad.");
+                alert.showAndWait();
+            });
+        }, 15 * 60 * 1000); // 15 mins
     }
 }

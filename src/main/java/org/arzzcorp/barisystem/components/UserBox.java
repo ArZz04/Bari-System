@@ -82,12 +82,11 @@ public class UserBox extends HBox {
     }
 
     @FXML
-    private void handleLogout() {
+    public void handleLogout() {
         AuthState.getInstance().logout(); // Desconecta desde el estado global
         APIService.logout();
 
         userImage.setImage(new Image(getClass().getResource("/org/arzzcorp/barisystem/images/users/default-avatar.png").toExternalForm()));
-
         UserService.clearUserInfo();
     }
 

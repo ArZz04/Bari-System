@@ -3,6 +3,7 @@ package org.arzzcorp.barisystem.components;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,9 @@ import javafx.scene.layout.VBox;
 import org.arzzcorp.barisystem.components.generic.Branches;
 import org.arzzcorp.barisystem.components.generic.MenuSide;
 import org.arzzcorp.barisystem.components.generic.ProductRow;
+import org.arzzcorp.barisystem.components.generic.SearchBar;
 import org.arzzcorp.barisystem.hooks.BranchState;
+import org.arzzcorp.barisystem.hooks.SearchFilterState;
 import org.arzzcorp.barisystem.services.ProductService;
 import org.json.JSONObject;
 
@@ -28,9 +31,10 @@ public class ProductsList extends VBox {
     @FXML
     private ListView<JSONObject> listView;
     private SortedList<JSONObject> sortedList;
+    private FilteredList<JSONObject> filteredList;
 
     private ObservableList<JSONObject> observableList = FXCollections.observableArrayList();
-    private ObservableList<JSONObject> selectedProductsList; // Referencia a la lista de Prices
+    private ObservableList<JSONObject> selectedProductsList;
     private Consumer<JSONObject> onProductAddedListener;
 
     public ProductsList() {
@@ -50,6 +54,7 @@ public class ProductsList extends VBox {
         instance.initialize(); // Llamar a initialize() en la instancia pasada
     }
 
+
     // ProductsList.java
     public void clearProducts() {
         observableList.clear();
@@ -61,13 +66,12 @@ public class ProductsList extends VBox {
     }
 
     private void initialize() {
-        // this.getChildren().add(listView);
-        // Si
 
         listView.setPlaceholder(new Label("No hay productos disponibles"));
 
         // Inicializar SortedList
-        sortedList = new SortedList<>(observableList);
+        filteredList = new FilteredList<>(observableList, p -> true);
+        sortedList = new SortedList<>(filteredList);
         listView.setItems(sortedList);
 
         BranchState.getInstance().currentBranchProperty().addListener((observable, oldBranch, newBranch) -> {
@@ -97,7 +101,11 @@ public class ProductsList extends VBox {
                     // Escucha el clic en el botón de agregar
                     row.setOnAddButtonClick(() -> {
                         if (onProductAddedListener != null) {
+                            // Aquí se obtiene el precio editado y el precio de compra
+
+                            double purchasePrice = row.getEditedPurchasePrice(); // Obtiene el precio de compra
                             double editedPrice = row.getEditedPrice(); // Obtiene el precio editado
+                            item.put("COSTO", purchasePrice); // Modifica el JSON original con el nuevo precio
                             item.put("P01", editedPrice); // Modifica el JSON original con el nuevo precio
                             onProductAddedListener.accept(item); // Notifica a Prices
                         }

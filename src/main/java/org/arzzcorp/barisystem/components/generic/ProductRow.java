@@ -89,6 +89,14 @@ public class ProductRow extends HBox {
         this.onAddButtonClick = listener;
     }
 
+    public double getEditedPurchasePrice() {
+        try {
+            return Double.parseDouble(purchasePriceField.getText());
+        } catch (NumberFormatException e) {
+            return 0.0; // o cualquier valor predeterminado
+        }
+    }
+
     public double getEditedPrice() {
         try {
             return Double.parseDouble(salePriceField.getText());
@@ -96,4 +104,5 @@ public class ProductRow extends HBox {
             return 0.0; // o cualquier valor predeterminado
         }
     }
+
 }

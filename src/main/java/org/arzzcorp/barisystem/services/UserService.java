@@ -7,6 +7,7 @@ import org.json.JSONObject;
 public class UserService {
 
     private static UserBox userBox;
+    private static Runnable postLogoutHandler;
 
     // Variable estática para almacenar la información del usuario
     private static JSONObject userInfo;
@@ -46,6 +47,23 @@ public class UserService {
             });
         }
         AuthState.getInstance().loadUserData(); // Cambia el estado a "datos cargados"
+    }
+
+    public static void setPostLogoutHandler(Runnable handler) {
+        postLogoutHandler = handler;
+    }
+
+    public static void logoutUser() {
+        if (userBox != null) {
+            userBox.handleLogout();
+        } else {
+            AuthState.getInstance().logout();
+            APIService.logout();
+            clearUserInfo();
+        }
+        if (postLogoutHandler != null) {
+            javafx.application.Platform.runLater(postLogoutHandler);
+        }
     }
 
 }

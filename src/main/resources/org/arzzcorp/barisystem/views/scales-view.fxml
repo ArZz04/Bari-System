@@ -1,20 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import org.arzzcorp.barisystem.components.generic.*?>
 
 <fx:root type="VBox" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
-    <StackPane fx:id="contentArea" style="-fx-background-color: #f5f5f5;" stylesheets="@../../barisystem/css/application.css">
-        <VBox alignment="TOP_CENTER">
+    <StackPane fx:id="contentArea" prefHeight="720.0" prefWidth="1069.0" style="-fx-background-color: #f5f5f5;" stylesheets="@../../barisystem/css/application.css">
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
             <Label style="-fx-font-size: 24;" text="Precios de Sucursales" />
             <Separator maxWidth="250" minHeight="5" style="-fx-background-color: #400814;" />
             <Branches fx:id="branches" />
 
-            <VBox alignment="BOTTOM_LEFT" style="-fx-padding: 10 0 0 0;">
-                <Label style="-fx-font-size: 18;" text="Bascula Servidor" />
+            <HBox alignment="TOP_LEFT" spacing="20" style="-fx-padding: 10 0 0 0;">
+                <!-- Servidor -->
+                <VBox alignment="TOP_LEFT" spacing="15">
+                    <Label style="-fx-font-size: 18;" text="Bascula Servidor" />
 
-            </VBox>
+                    <HBox alignment="BOTTOM_LEFT" spacing="10" style="-fx-padding: 12; -fx-background-color: #d1d1d1; -fx-border-radius: 8; -fx-background-radius: 8;">
+                        <Label style="-fx-font-weight: bold; -fx-text-fill: #400814;" text="IP:" />
+                        <Label style="-fx-text-fill: #333;" text="192.168.100.215" />
+                        <Label style="-fx-font-weight: bold; -fx-text-fill: #400814;" text="Puerto:" />
+                        <Label style="-fx-text-fill: #333;" text="3306" />
+                        <Label style="-fx-font-weight: bold; -fx-text-fill: #400814;" text="Estado:" />
+                        <Label style="-fx-text-fill: #333;" text="Conectado" />
+                    </HBox>
+
+                    <VBox spacing="10">
+                        <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="VENDEDORES:" />
+
+                        <!-- Encabezado -->
+                        <HBox alignment="CENTER_LEFT" spacing="8" style="-fx-background-color: #400814; -fx-padding: 10; -fx-background-radius: 6;">
+                            <Label style="-fx-text-fill: white; -fx-pref-width: 60;" text="ID" />
+                            <Label style="-fx-text-fill: white; -fx-pref-width: 120;" text="NOMBRE" />
+                            <Label style="-fx-text-fill: white; -fx-pref-width: 150;" text="RUTA DE IMAGEN" />
+                            <Label style="-fx-text-fill: white; -fx-pref-width: 120;" text="ENVIAR IMAGEN" />
+                            <Label style="-fx-text-fill: white; -fx-pref-width: 100;" text="GUARDAR" />
+                        </HBox>
+
+                        <ListView fx:id="vendorListView" VBox.vgrow="ALWAYS">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <VendorCard fx:id="vendorCard1" />
+                                    <VendorCard fx:id="vendorCard2" />
+                                    <VendorCard fx:id="vendorCard3" />
+                                    <VendorCard fx:id="vendorCard4" />
+                                    <VendorCard fx:id="vendorCard5" />
+                                    <VendorCard fx:id="vendorCard6" />
+                                    <VendorCard fx:id="vendorCard7" />
+                                    <VendorCard fx:id="vendorCard8" />
+                                    <VendorCard fx:id="vendorCard9" />
+                                </FXCollections>
+                            </items>
+                        </ListView>
+                    </VBox>
+                </VBox>
+
+                <!-- Clientes -->
+                <VBox alignment="TOP_LEFT" spacing="10">
+                    <Label style="-fx-font-size: 18;" text="Basculas Cliente" />
+
+                    <VBox spacing="5">
+                        <HBox alignment="BOTTOM_LEFT" spacing="10" style="-fx-padding: 12; -fx-background-color: #d1d1d1; -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #400814;" text="IP:" />
+                            <Label style="-fx-text-fill: #333;" text="192.168.100.215" />
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #400814;" text="Puerto:" />
+                            <Label style="-fx-text-fill: #333;" text="3306" />
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #400814;" text="Estado:" />
+                            <Label style="-fx-text-fill: #333;" text="Conectado" />
+                        </HBox>
+
+                        <HBox alignment="BOTTOM_LEFT" spacing="10" style="-fx-padding: 12; -fx-background-color: #d1d1d1; -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #400814;" text="IP:" />
+                            <Label style="-fx-text-fill: #333;" text="192.168.100.215" />
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #400814;" text="Puerto:" />
+                            <Label style="-fx-text-fill: #333;" text="3306" />
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #400814;" text="Estado:" />
+                            <Label style="-fx-text-fill: #333;" text="Conectado" />
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </HBox>
         </VBox>
     </StackPane>
 </fx:root>

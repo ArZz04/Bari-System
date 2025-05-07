@@ -38,5 +38,6 @@ public class AuthState {
     public void logout() {
         loggedIn.set(false);
         userDataLoaded.set(false); // Reseteamos los datos cuando el usuario cierre sesión
+        SessionManager.cancelSessionTimeout();
     }
 }

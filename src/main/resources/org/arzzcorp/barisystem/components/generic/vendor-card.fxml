@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.HBox" alignment="CENTER_LEFT" spacing="8" style="-fx-background-color: #d1d1d1; -fx-padding: 10; -fx-background-radius: 6;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+
+    <Label style="-fx-text-fill: #333; -fx-pref-width: 60;" text="1" />
+    <Label style="-fx-text-fill: #333; -fx-pref-width: 120;" text="Juan Arvizu" />
+    <Label style="-fx-text-fill: #333; -fx-pref-width: 150;" text="/path/to/image.jpg" />
+    <Button style="-fx-font-size: 11; -fx-text-fill: #333; -fx-pref-width: 90; -fx-text-fill: white;" text="Cargar" />
+    <Button style="-fx-background-color: #5a0b1c; -fx-text-fill: white; -fx-pref-width: 100;" text="Guardar" />
+
+</fx:root>
+

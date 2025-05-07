@@ -8,6 +8,7 @@ import org.arzzcorp.barisystem.components.generic.MenuSide;
 import org.arzzcorp.barisystem.components.views.Main;
 import org.arzzcorp.barisystem.components.views.Prices;
 import org.arzzcorp.barisystem.components.views.Scales;
+import org.arzzcorp.barisystem.services.UserService;
 
 import java.util.function.Consumer;
 
@@ -26,6 +27,8 @@ public class SystemController {
     @FXML
     public void initialize() {
         showMain(); // Muestra por defecto
+
+        UserService.setPostLogoutHandler(this::showMain); // Registrar handler
 
         // Suscripción a eventos desde MenuSide
         menuSide.setOnMenuSelection(this::handleMenuSelection);
