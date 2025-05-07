@@ -1,5 +1,6 @@
 package org.arzzcorp.barisystem.services;
 
+import org.arzzcorp.barisystem.hooks.BranchState;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.concurrent.CompletableFuture;
@@ -129,26 +130,30 @@ public class APIService {
         });
     }
 
-    public static CompletableFuture<Boolean> updateProducts(JSONArray products) {
+    public static CompletableFuture<Boolean> updateProducts(JSONArray products, String branch) {
         return CompletableFuture.supplyAsync(() -> {
             try {
-
-                // Obtener el token de autenticación
                 String token = TokenService.getAuthToken();
                 if (token == null) {
                     throw new Exception("Token no encontrado");
                 }
 
-                String response = ApiFunctions.makePostRequestSync(
-                        "http://bariparques.local:4000/api/both/products/update-multiple",
+                String url = "http://bariparques.local:4000/api/" + branch + "/products/update-multiple";
+
+                String response = ApiFunctions.makePutRequestSync(
+                        url,
                         products.toString(),
-                        token
+                        token // Asegúrate de que makePostRequestSync añade "Bearer"
                 );
+
+                // Debug: Imprime la respuesta del servidor
+                System.out.println("Respuesta del servidor: " + response);
 
                 return response != null;
 
             } catch (Exception e) {
-                System.err.println("Error en autenticación: " + e.getMessage());
+                System.err.println("Error en la petición: " + e.getMessage());
+                e.printStackTrace(); // Detalles del error
                 return false;
             }
         });

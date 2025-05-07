@@ -88,4 +88,12 @@ public class ProductRow extends HBox {
     public void setOnAddButtonClick(Runnable listener) {
         this.onAddButtonClick = listener;
     }
+
+    public double getEditedPrice() {
+        try {
+            return Double.parseDouble(salePriceField.getText());
+        } catch (NumberFormatException e) {
+            return 0.0; // o cualquier valor predeterminado
+        }
+    }
 }

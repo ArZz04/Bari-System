@@ -1,14 +1,18 @@
 package org.arzzcorp.barisystem.components.views;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import org.arzzcorp.barisystem.components.ProductsList;
 import org.arzzcorp.barisystem.components.generic.Branches;
 import org.arzzcorp.barisystem.components.generic.OrderDropdown;
 import org.arzzcorp.barisystem.hooks.BranchState;
+import org.arzzcorp.barisystem.services.ProductService;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -19,7 +23,7 @@ public class Prices extends VBox {
     private OrderDropdown orderDropdown;
     @FXML private ProductsList productsList;
     @FXML private Branches branches;
-
+    @FXML private Button sendButton;
 
     // Lista observable para productos seleccionados
     private final ObservableList<JSONObject> selectedProducts = FXCollections.observableArrayList();
@@ -63,6 +67,49 @@ public class Prices extends VBox {
 
         productsList.setSelectedProductsList(selectedProducts);
     }
+
+
+
+    @FXML
+    private void onSendButtonClicked() {
+        // Obtener el nombre del branch actual
+        String currentBranchName = BranchState.getInstance().getCurrentBranch().toString(); // asumiendo getName() retorna "PARQUES" o "VALLE_CIMA"
+
+        // Determinar la ruta de la API y los productos según la sucursal
+        String branchKey;
+        ObservableList<JSONObject> productsToSend;
+
+        if ("VALLE_CIMA".equalsIgnoreCase(currentBranchName)) {
+            branchKey = "both";
+            productsToSend = addedBothProducts;
+        } else {
+            branchKey = "parques";
+            productsToSend = addedParquesProducts;
+        }
+
+        if (productsToSend.isEmpty()) {
+            System.out.println("No hay productos para enviar.");
+            return;
+        }
+
+        System.out.println("Productos a enviar: " + productsToSend);
+        JSONArray jsonArray = new JSONArray(productsToSend);
+
+        sendButton.setDisable(true); // Desactiva el botón durante el envío
+
+        ProductService.sendProductsToAPI(jsonArray, branchKey).thenAccept(success -> {
+            Platform.runLater(() -> {
+                if (success) {
+                    addedBothProducts.clear();
+                    addedParquesProducts.clear();
+                } else {
+                    System.err.println("Error al enviar productos.");
+                }
+                sendButton.setDisable(false); // Reactiva el botón
+            });
+        });
+    }
+
 
     public ObservableList<JSONObject> getSelectedProducts() {
         return selectedProducts;

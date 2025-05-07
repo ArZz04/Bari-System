@@ -97,6 +97,8 @@ public class ProductsList extends VBox {
                     // Escucha el clic en el botón de agregar
                     row.setOnAddButtonClick(() -> {
                         if (onProductAddedListener != null) {
+                            double editedPrice = row.getEditedPrice(); // Obtiene el precio editado
+                            item.put("P01", editedPrice); // Modifica el JSON original con el nuevo precio
                             onProductAddedListener.accept(item); // Notifica a Prices
                         }
                     });

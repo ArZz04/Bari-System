@@ -29,9 +29,17 @@
             </VBox>
 
             <TitleProducts />
-            <ScrollPane fitToWidth="true" maxHeight="480" prefHeight="600" style="-fx-background-color: transparent;">
+            <ScrollPane fitToWidth="true" maxHeight="480" prefHeight="406.0" prefWidth="886.0" style="-fx-background-color: transparent;">
                 <ProductsList fx:id="productsList" style="-fx-border-color: #400814;" />
             </ScrollPane>
+            <HBox alignment="BOTTOM_RIGHT">
+                <Label fx:id="" style="-fx-font-size: 18;" text="Productos Seleccionados:" />
+                <Label fx:id="selectedProductsCounter" style="-fx-font-size: 18;" text="0" />
+                <Label style="-fx-font-size: 18;" text=" / " />
+                <Button fx:id="sendButton" onAction="#onSendButtonClicked" style="-fx-font-size: 18;" styleClass="button-primary" text="Enviar" />
+            </HBox>
+
+
         </VBox>
     </StackPane>
 </fx:root>

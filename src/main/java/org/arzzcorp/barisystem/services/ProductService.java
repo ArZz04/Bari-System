@@ -48,6 +48,9 @@ public class ProductService {
         });
     }
 
+    public static CompletableFuture<Boolean> sendProductsToAPI(JSONArray products, String branch) {
+        return APIService.updateProducts(products, branch);
+    }
 
     public static void clearProductsList() {
         System.out.println("Limpiando los productos almacenados");
