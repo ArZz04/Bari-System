@@ -11,7 +11,7 @@
         <VBox alignment="TOP_CENTER">
             <Label style="-fx-font-size: 24;" text="Precios de Sucursales" />
             <Separator maxWidth="250" minHeight="5" style="-fx-background-color: #400814;" />
-            <Branches />
+            <Branches fx:id="branches" />
             <HBox spacing="15" style="-fx-padding: 5 0 0 0;">
                 <SearchBar />
                 <OrderDropdown fx:id="orderDropdown" />

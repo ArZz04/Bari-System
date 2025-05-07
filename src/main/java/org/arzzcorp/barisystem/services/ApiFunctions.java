@@ -31,6 +31,26 @@ public class ApiFunctions {
         }
     }
 
+    // Método para hacer una solicitud Post con token
+    public static String makePostRequestSync(String url, String requestBody, String token) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + token)  // Aquí se incluye el token en el header
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 200) {
+            return response.body();
+        } else {
+            throw new Exception("HTTP error: " + response.statusCode() + " - " + response.body());
+        }
+    }
+
     // Método para hacer una solicitud Get sin token
     public static String makeGetRequestSync(String url) throws Exception {
         HttpClient client = HttpClient.newHttpClient();

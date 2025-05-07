@@ -3,6 +3,7 @@ package org.arzzcorp.barisystem;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import org.arzzcorp.barisystem.components.ProductsList;
+import org.arzzcorp.barisystem.components.generic.Branches;
 import org.arzzcorp.barisystem.components.generic.MenuSide;
 import org.arzzcorp.barisystem.components.views.Main;
 import org.arzzcorp.barisystem.components.views.Prices;
@@ -21,7 +22,6 @@ public class SystemController {
 
     @FXML private StackPane contentPane;
     @FXML private MenuSide menuSide;
-
 
     @FXML
     public void initialize() {
@@ -57,27 +57,39 @@ public class SystemController {
     }
 
     private void showPrices() {
-        mainView.setVisible(false);
-        pricesView.setVisible(true);
-        scalesView.setVisible(false);
 
         // Obtener ProductsList desde pricesView
         ProductsList productsList = pricesView.getProductsList();
         if (productsList != null) {
             ProductsList.setTokenGetted(productsList);
         }
+
+        Branches branches = pricesView.getBranchesPrices();
+        if (branches != null) {
+            branches.disableTabs();
+        }
+
+        mainView.setVisible(false);
+        pricesView.setVisible(true);
+        scalesView.setVisible(false);
     }
 
     private void showScales() {
-        mainView.setVisible(false);
-        pricesView.setVisible(false);
-        scalesView.setVisible(true);
 
         // Limpiar la lista al salir de Prices
         ProductsList productsList = pricesView.getProductsList();
         if (productsList != null) {
             productsList.clearProducts();
         }
+
+        Branches branches = scalesView.getBranchesPrices();
+        if (branches != null) {
+            branches.enableTabs();
+        }
+
+        mainView.setVisible(false);
+        pricesView.setVisible(false);
+        scalesView.setVisible(true);
     }
 
     public void setOnMenuSelected(Consumer<String> onMenuSelected) {

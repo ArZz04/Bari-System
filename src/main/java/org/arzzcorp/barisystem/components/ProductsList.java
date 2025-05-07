@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
+import org.arzzcorp.barisystem.components.generic.Branches;
+import org.arzzcorp.barisystem.components.generic.MenuSide;
 import org.arzzcorp.barisystem.components.generic.ProductRow;
 import org.arzzcorp.barisystem.hooks.BranchState;
 import org.arzzcorp.barisystem.services.ProductService;
@@ -20,6 +22,8 @@ import java.util.Comparator;
 import java.util.function.Consumer;
 
 public class ProductsList extends VBox {
+
+    private Branches branches;
 
     @FXML
     private ListView<JSONObject> listView;
@@ -52,8 +56,13 @@ public class ProductsList extends VBox {
         listView.setPlaceholder(new Label("No hay productos disponibles"));
     }
 
+    public void setBranches(Branches branches) {
+        this.branches = branches;
+    }
+
     private void initialize() {
         // this.getChildren().add(listView);
+        // Si
 
         listView.setPlaceholder(new Label("No hay productos disponibles"));
 
@@ -101,6 +110,11 @@ public class ProductsList extends VBox {
     // Método para cargar productos, con o sin filtro
     public void loadProducts(String  branch) {
 
+        if (branches != null && !branches.isPricesMode()) {
+            System.out.println("No se necesita hacer la petición porque no estamos en Prices.");
+            return;
+        }
+
         Platform.runLater(() -> {
             observableList.clear();
             listView.setPlaceholder(new Label("Cargando productos..."));
@@ -112,6 +126,7 @@ public class ProductsList extends VBox {
 
                 for (int i = 0; i < productsList.length(); i++) {
                     JSONObject product = productsList.getJSONObject(i);
+
                     observableList.add(product);
                 }
 

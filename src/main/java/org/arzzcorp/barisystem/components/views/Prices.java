@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import org.arzzcorp.barisystem.components.ProductsList;
+import org.arzzcorp.barisystem.components.generic.Branches;
 import org.arzzcorp.barisystem.components.generic.OrderDropdown;
 import org.arzzcorp.barisystem.hooks.BranchState;
 import org.json.JSONObject;
@@ -17,6 +18,8 @@ public class Prices extends VBox {
     @FXML
     private OrderDropdown orderDropdown;
     @FXML private ProductsList productsList;
+    @FXML private Branches branches;
+
 
     // Lista observable para productos seleccionados
     private final ObservableList<JSONObject> selectedProducts = FXCollections.observableArrayList();
@@ -43,6 +46,7 @@ public class Prices extends VBox {
     // Initialize method to set up the view
     @FXML
     private void initialize() {
+        productsList.setBranches(branches);
         orderDropdown.setOnOrderSelected(productsList::sortBy);
 
         productsList.setOnProductAdded(product -> {
@@ -72,5 +76,8 @@ public class Prices extends VBox {
         return addedBothProducts;
     }
 
+    public Branches getBranchesPrices() {
+        return branches;
+    }
 
 }

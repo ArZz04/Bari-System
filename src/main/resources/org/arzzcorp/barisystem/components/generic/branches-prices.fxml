@@ -9,6 +9,12 @@
             <Tab fx:id="parquesTab" styleClass="branch-tab" text="PARQUES">
                 <VBox styleClass="tab-content" />
             </Tab>
+            <Tab fx:id="valleTab" styleClass="branch-tab" text="VALLE">
+                <VBox styleClass="tab-content" />
+            </Tab>
+            <Tab fx:id="cimaTab" styleClass="branch-tab" text="CIMA">
+                <VBox styleClass="tab-content" />
+            </Tab>
             <Tab fx:id="valleCimaTab" styleClass="branch-tab" text="VALLE | CIMA">
                 <VBox styleClass="tab-content" />
             </Tab>

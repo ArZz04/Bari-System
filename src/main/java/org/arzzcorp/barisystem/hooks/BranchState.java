@@ -15,6 +15,8 @@ public class BranchState {
     // Enum para las sucursales disponibles
     public enum Branch {
         PARQUES("PARQUES"),
+        VALLE("VALLE"),
+        CIMA("CIMA"),
         VALLE_CIMA("VALLE | CIMA");
 
         private final String displayName;

@@ -9,7 +9,7 @@
         <VBox alignment="TOP_CENTER">
             <Label style="-fx-font-size: 24;" text="Precios de Sucursales" />
             <Separator maxWidth="250" minHeight="5" style="-fx-background-color: #400814;" />
-            <Branches />
+            <Branches fx:id="branches" />
 
             <VBox alignment="BOTTOM_LEFT" style="-fx-padding: 10 0 0 0;">
                 <Label style="-fx-font-size: 18;" text="Bascula Servidor" />

@@ -129,6 +129,31 @@ public class APIService {
         });
     }
 
+    public static CompletableFuture<Boolean> updateProducts(JSONArray products) {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+
+                // Obtener el token de autenticación
+                String token = TokenService.getAuthToken();
+                if (token == null) {
+                    throw new Exception("Token no encontrado");
+                }
+
+                String response = ApiFunctions.makePostRequestSync(
+                        "http://bariparques.local:4000/api/both/products/update-multiple",
+                        products.toString(),
+                        token
+                );
+
+                return response != null;
+
+            } catch (Exception e) {
+                System.err.println("Error en autenticación: " + e.getMessage());
+                return false;
+            }
+        });
+    }
+
 
     public static void logout() {
         TokenService.clearAuthToken();
